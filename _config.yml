@@ -7,7 +7,7 @@ title:            KnowledgeLog
 tagline:          Log stuff
 url:              http://emilw.github.io
 paginate:         1
-baseurl:          https://emilw.github.io
+baseurl:          /
 author:
   name:           Emil W
   url:            http://emilw.github.io

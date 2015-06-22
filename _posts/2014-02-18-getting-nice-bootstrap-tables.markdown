@@ -13,10 +13,9 @@ categories:
 To get nice tables from Bootstrap available in Wordpress the following can be done to incorporate them in the a wordpress blog.
 
 Add the css code below to the Theme settings custom css:
-[learn_more caption="The CSS code for tables from bootstrap"]
 
-`
-/*Table section from bootstrap------------------------------------------------------------------------------------------------- */`
+```html
+/*Table section from bootstrap------------------------------------------------------------------------------------------------- */
 
 table {
 max-width: 100%;
@@ -101,18 +100,15 @@ background-color: #eaeaea;
 .table-hover > tbody > tr:hover > th {
 background-color: #f5f5f5;
 }
-
-[/learn_more]
-
+```
 
 
-`Decorate the table according to Bootstraps reference, at [http://getbootstrap.com/2.3.2/base-css.html#tables](http://getbootstrap.com/2.3.2/base-css.html#tables)`
+Decorate the table according to Bootstraps reference, at [http://getbootstrap.com/2.3.2/base-css.html#tables](http://getbootstrap.com/2.3.2/base-css.html#tables)`
 
-`classes: ``table, table-striped, table-bordered, table-hover, table-condensed
-`
-
-` `
+classes: ```table, table-striped, table-bordered, table-hover, table-condensed
+```
 
 
 
-Example can be found the at the [DNS](http://lime.postback.se/2014/02/18/basic-dns/) post.
+
+Example can be found at the [DNS](http://lime.postback.se/2014/02/18/basic-dns/) post.

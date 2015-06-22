@@ -4,7 +4,7 @@
  <title>KnowledgeLog</title>
  <link href="http://emilw.github.io/atom.xml" rel="self"/>
  <link href="http://emilw.github.io/"/>
- <updated>2015-06-22T13:39:33+02:00</updated>
+ <updated>2015-06-22T13:54:43+02:00</updated>
  <id>http://emilw.github.io</id>
  <author>
    <name>Emil W</name>
@@ -736,11 +736,10 @@ See more here: [http://www.moddb.com/engines/unity/reviews](http://www.moddb.co
    <id>http://emilw.github.io/wordpress/2014/02/18/getting-nice-bootstrap-tables</id>
    <content type="html">&lt;p&gt;To get nice tables from Bootstrap available in Wordpress the following can be done to incorporate them in the a wordpress blog.&lt;/p&gt;
 
-&lt;p&gt;Add the css code below to the Theme settings custom css:
-[learn_more caption=”The CSS code for tables from bootstrap”]&lt;/p&gt;
+&lt;p&gt;Add the css code below to the Theme settings custom css:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
-/*Table section from bootstrap------------------------------------------------------------------------------------------------- */&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;```html
+/*Table section from bootstrap————————————————————————————————- */&lt;/p&gt;
 
 &lt;p&gt;table {
 max-width: 100%;
@@ -824,18 +823,15 @@ background-color: #eaeaea;
 &lt;p&gt;.table-hover &amp;gt; tbody &amp;gt; tr:hover &amp;gt; td,
 .table-hover &amp;gt; tbody &amp;gt; tr:hover &amp;gt; th {
 background-color: #f5f5f5;
-}&lt;/p&gt;
+}
+```&lt;/p&gt;
 
-&lt;p&gt;[/learn_more]&lt;/p&gt;
+&lt;p&gt;Decorate the table according to Bootstraps reference, at &lt;a href=&quot;http://getbootstrap.com/2.3.2/base-css.html#tables&quot;&gt;http://getbootstrap.com/2.3.2/base-css.html#tables&lt;/a&gt;`&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;Decorate the table according to Bootstraps reference, at [http://getbootstrap.com/2.3.2/base-css.html#tables](http://getbootstrap.com/2.3.2/base-css.html#tables)&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;classes: &lt;/code&gt;&lt;code&gt;table, table-striped, table-bordered, table-hover, table-condensed
+&lt;p&gt;classes: &lt;code&gt;table, table-striped, table-bordered, table-hover, table-condensed
 &lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt; &lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Example can be found the at the &lt;a href=&quot;http://lime.postback.se/2014/02/18/basic-dns/&quot;&gt;DNS&lt;/a&gt; post.&lt;/p&gt;
+&lt;p&gt;Example can be found at the &lt;a href=&quot;http://lime.postback.se/2014/02/18/basic-dns/&quot;&gt;DNS&lt;/a&gt; post.&lt;/p&gt;
 </content>
  </entry>
  

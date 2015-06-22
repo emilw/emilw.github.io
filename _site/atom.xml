@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>KnowledgeLog</title>
+ <link href="http://emilw.github.io/atom.xml" rel="self"/>
+ <link href="http://emilw.github.io/"/>
+ <updated>2015-06-22T13:39:33+02:00</updated>
+ <id>http://emilw.github.io</id>
+ <author>
+   <name>Emil W</name>
+   <email>emil@postback.se</email>
+ </author>
+
+ 
+ <entry>
+   <title>Make files recap</title>
+   <link href="http://emilw.github.io//c++/2014/11/01/make-files-recap/"/>
+   <updated>2014-11-01T17:16:13+01:00</updated>
+   <id>http://emilw.github.io/c++/2014/11/01/make-files-recap</id>
+   <content type="html">&lt;p&gt;Below is a basic makefile:&lt;/p&gt;
+
+&lt;p&gt;`
+//Setup what’s the end goal, in this case it’s client that should be resolved and what it depends on
+all: client&lt;/p&gt;
+
+&lt;p&gt;//Link them to the final runnable file, e.g. client in this example
+client: main.o HttpClient.o HttpResponse.o StringBufferHelper.o URL.o TCPClient.o
+	g++ main.o HttpClient.o HttpResponse.o StringBufferHelper.o URL.o TCPClient.o -o client&lt;/p&gt;
+
+&lt;p&gt;//Compile all source to object files
+main.o: main.cpp
+	g++ -c main.cpp&lt;/p&gt;
+
+&lt;p&gt;HttpClient.o: HttpClient.cpp HttpClient.h
+	g++ -c HttpClient.cpp HttpClient.h&lt;/p&gt;
+
+&lt;p&gt;HttpResponse.o: HttpResponse.cpp HttpResponse.h
+	g++ -c HttpResponse.cpp HttpResponse.h&lt;/p&gt;
+
+&lt;p&gt;StringBufferHelper.o: StringBufferHelper.cpp StringBufferHelper.h
+	g++ -c StringBufferHelper.cpp StringBufferHelper.h&lt;/p&gt;
+
+&lt;p&gt;URL.o: URL.cpp URL.h
+	g++ -c URL.cpp URL.h&lt;/p&gt;
+
+&lt;p&gt;TCPClient.o: TCPClient.cpp TCPClient.h
+	g++ -c TCPClient.cpp TCPClient.h&lt;/p&gt;
+
+&lt;h1 id=&quot;helloo-hellocpp&quot;&gt;hello.o: hello.cpp&lt;/h1&gt;
+&lt;p&gt;#    g++ -c hello.cpp&lt;/p&gt;
+
+&lt;p&gt;clean:
+	rm -rf *o client&lt;/p&gt;
+
+&lt;p&gt;`&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>GIT keeping feature branch up to date with master</title>
+   <link href="http://emilw.github.io//tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master/"/>
+   <updated>2014-11-01T17:10:06+01:00</updated>
+   <id>http://emilw.github.io/tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master</id>
+   <content type="html">&lt;p&gt;When working on a feature i started checking whats the best workflow to keep the feature branch updated against the master branch.
+After som trial and error, this is my workflow:&lt;/p&gt;
+
+&lt;p&gt;`
+//Create the branch with a central branch(for keeping the code safe)
+git branch Featurebranch1
+git checkout Featurebranch1
+git push -u origin Featurebranch1
+//Do operations on feature branch and merge with master
+git merge master //Continue until the the feature is ready&lt;/p&gt;
+
+&lt;p&gt;//Get it into main branch, we do not want all small commits from the feature branch, so we put it in one big commit
+git checkout master
+git merge –squash Featurebranch1&lt;/p&gt;
+
+&lt;p&gt;//All files are now ready to be committed to the master branch
+git commit -m “The great feature”&lt;/p&gt;
+
+&lt;p&gt;//Push all of it to central master, and the feature is done&lt;/p&gt;
+
+&lt;p&gt;`&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>GIT Stash</title>
+   <link href="http://emilw.github.io//tips/version%20control/2014/10/28/git-stash/"/>
+   <updated>2014-10-28T12:39:55+01:00</updated>
+   <id>http://emilw.github.io/tips/version%20control/2014/10/28/git-stash</id>
+   <content type="html">&lt;p&gt;If you make you want to upgrade your local repository with the latest changes, e.g. merge with non commited local files you can use the command stash.&lt;/p&gt;
+
+&lt;p&gt;`
+//Stash the current work
+git stash&lt;/p&gt;
+
+&lt;p&gt;//Check status, should be empty
+git status&lt;/p&gt;
+
+&lt;p&gt;//Get the list of stashes
+git stash list&lt;/p&gt;
+
+&lt;p&gt;//…..Do operations e.g.
+git pull&lt;/p&gt;
+
+&lt;p&gt;//Apply the stash again
+git stash apply&lt;/p&gt;
+
+&lt;p&gt;//Check status, the stashed files should be marked as before
+git status
+`&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Buildprocess with Grunt.js</title>
+   <link href="http://emilw.github.io//automation/javascript/2014/08/04/buildprocess-with-grunt-js/"/>
+   <updated>2014-08-04T17:42:48+02:00</updated>
+   <id>http://emilw.github.io/automation/javascript/2014/08/04/buildprocess-with-grunt-js</id>
+   <content type="html">&lt;p&gt;When i started my personal game project, i only used xcode to build the output libraries. After a while there was a lot of manual work related to scaling images, running UnitTests etc. so i started adding bash scripts that did this. The problem started to arise quite soon when it got hard to maintain. At the moment i read a blog post about Grunt.js that run on node.js. Due to that node.js can run on all platform, using Grunt.js would allow me to run the platform independent parts, e.g for C++, web or image management on all platforms. This seemed nice to me so i tried it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Basics:&lt;/strong&gt;
+Grunt.js uses a folder where it expects two files to exist, these are:
+- Gruntfile.js
+- package.json&lt;/p&gt;
+
+&lt;p&gt;Gruntfile.js is the task(s) configuration and package.json holds what packages from node that are active for the project/folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Installing grunt on the system:&lt;/strong&gt;
+`
+//Install grunt, the grunt command can be executed everywhere after this step
+&amp;gt;npm install -g grunt-cli
+`
+Setup for a project/folder:
+`
+//Create the package.json(The file can be created manually if there is a need to it)
+&amp;gt;npm init
+//Init the grunt libs for the project(–save-dev adds the package dependencies to the package.json file)
+&amp;gt;npm install grunt –save-dev&lt;/p&gt;
+
+&lt;p&gt;//Download and install example task, file resize task
+&amp;gt;npm install grunt-multiresize –save-dev
+`&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;package.json after the steps above was done:&lt;/strong&gt;
+`
+{
+  “name”: “GruntAutomationTest”,
+  “version”: “0.0.0”,
+  “description”: “”,
+  “main”: “Gruntfile.js”,
+  “scripts”: {
+    “test”: “echo &quot;Error: no test specified&quot; &amp;amp;&amp;amp; exit 1”
+  },
+  “author”: “”,
+  “license”: “ISC”,
+  “devDependencies”: {
+    “grunt”: “^0.4.5”,
+    “grunt-multiresize”: “^0.3.1”
+  }
+}
+`&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Configuring a task(Gruntfile.js):&lt;/strong&gt;
+`
+module.exports = function(grunt) {
+grunt.initConfig({
+pkg: grunt.file.readJSON(‘package.json’),
+multiresize: {
+image1: {
+src: ‘/Users/Emil/Repos/Bybbarna/BybbarnaHunt/BybbarnaHunt/TextureAtlases/Raw/sprites-ipad.atlas/Bybbe.png’,
+dest: [‘Output/Bybbe.png’, ‘Output/Bybbe@2.png’],
+destSizes: [‘100x100’, ‘200x200’]
+},
+},
+});`&lt;/p&gt;
+
+&lt;p&gt;// Load the plugin that provides the “image resize”
+grunt.loadNpmTasks(‘grunt-multiresize’);&lt;/p&gt;
+
+&lt;p&gt;// Default task(s).
+grunt.registerTask(‘default’, [‘multiresize’]);&lt;/p&gt;
+
+&lt;p&gt;};&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To run it:&lt;/strong&gt;
+Navigate to the root folder of the project from the command line
+`
+//Runs the default task, that was defined above e.g. ‘multiresize’
+&amp;gt;grunt
+`&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Final words:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There is some competition between Grunt.js and Gulp.js. The big difference is that Grunt.js is more focused on configuration style and Gulp.js is more coding style when setting up the tasks. Read more here:&lt;/p&gt;
+
+&lt;p&gt;http://www.johnpapa.net/gulp-and-grunt-at-anglebrackets/&lt;/p&gt;
+
+&lt;p&gt;Good resources:
+- http://gruntjs.com/plugins&lt;/p&gt;
+
+&lt;p&gt;- http://gruntjs.com&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Securing a HTTP service with HMAC</title>
+   <link href="http://emilw.github.io//game/http/javascript/security/uncategorised/2014/07/08/securing-a-http-service-with-hmac/"/>
+   <updated>2014-07-08T14:29:50+02:00</updated>
+   <id>http://emilw.github.io/game/http/javascript/security/uncategorised/2014/07/08/securing-a-http-service-with-hmac</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Intro:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For a game i wanted to publish the highscore online. To be able to publish it online i needed a REST/HTTP service that could accept the highscore update. The service needed to be secure to make sure that only my game could update the highscore but i wanted to avoid forcing the game user to have to give a username and password to do this.&lt;/p&gt;
+
+&lt;p&gt;The straight forward approach would have been to use SSL at the web site and basic authentication with the same uid and pwd for every client. The problem though is that i do not have SSL support at my hosting provider….&lt;/p&gt;
+
+&lt;p&gt;So i needed to make this work in another way. I checked different solutions and the most common one seems to be to use HMAC(Hashbased Message Authentication Code) to secure the calls. Read more: &lt;a href=&quot;http://en.wikipedia.org/wiki/Hash-based_message_authentication_code&quot;&gt;http://en.wikipedia.org/wiki/Hash-based_message_authentication_code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The basic theory behind HMAC is to share a secret key to all devices/programs that are going to use your system. This key is used to hash the messages sent. The key is stored in a http request header field and validated on the server(that allso have the same key). There are some pitfalls with this solution, if you only hash the message with the key, you could have a “man in the middle” attack, where the message could be changed. To avoid this it’s important to include as much as possible from the http request itself so it’s possible to calculate a hash based on the content of the request. As an addition, it’s good to have a timestamp in a header to avoid replay attacks.&lt;/p&gt;
+
+&lt;p&gt;I tested the solution in Javascript, and i noticed that there was a lot of the standard headers missing or not possible to set from Javascript. For instance was the MD5-Content header emtpy. This is a hash by itself of the message content. The MD5-Content and the secret key would be perfect input to the hash function.&lt;/p&gt;
+
+&lt;p&gt;MD5 example on server side: &lt;a href=&quot;http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/&quot;&gt;http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The algorithm for generating the HMAC key was SHA-1.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Overall flow:&lt;/strong&gt;
+Defined two new http headers:
+- X-HMAC that holds the security hash
+- X-Timestamp that holds the time stamp from when the request was sent
+The client calculate the hash based on the security key and the X-Timestamp and sets that key in X-HMAC.
+The serverside does the same calculation with the pre shared key and the X-Timestamp and compares that value with the value in the header X-HMAC.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Details:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Client side(Web(Javascript) together with Angular):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I used &lt;a href=&quot;https://code.google.com/p/crypto-js/#HMAC&quot;&gt;https://code.google.com/p/crypto-js/#HMAC&lt;/a&gt; as the client crypto library&lt;/li&gt;
+  &lt;li&gt;Registered an interceptor in Angular.js for the http module to add the headers.
+`
+(function () {
+‘use strict’;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;angular.module(‘common’)
+.factory(‘hmacInterceptor’, [‘$log’, hmacInterceptor]);&lt;/p&gt;
+
+&lt;p&gt;function hmacInterceptor($log) {&lt;/p&gt;
+
+&lt;p&gt;$log.debug(‘In interceptor’);
+var sessionInjection = {
+request: function (config) {
+var now = new Date();
+var xTimestamp = now.toUTCString();
+config.headers[‘X-Timestamp’] = xTimestamp;
+config.headers[‘X-HMAC’] = CryptoJS.HmacSHA1(xTimestamp, “bybbe12345bybbe33333”);
+$log.debug(config.headers);
+return config;
+}
+};&lt;/p&gt;
+
+&lt;p&gt;return sessionInjection;
+}
+})();
+`&lt;/p&gt;
+
+&lt;p&gt;Server side(Web API/.NET):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nice built in crypto support&lt;/li&gt;
+  &lt;li&gt;Easy to extend the Authorization attribute to check the HMAC header instead&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;`
+public class APIAuthorizationAttribute : AuthorizeAttribute
+{&lt;/p&gt;
+
+&lt;p&gt;private string XHMAC = “X-HMAC”;
+private string XTIMESTAMP = “X-Timestamp”;&lt;/p&gt;
+
+&lt;p&gt;private string SECRET;&lt;/p&gt;
+
+&lt;p&gt;public APIAuthorizationAttribute()
+{
+try
+{
+SECRET = System.Configuration.ConfigurationManager.AppSettings[“HMACSecret”];
+}
+catch (Exception ex)
+{
+throw new Exception(“Failed to read secret from web config”, ex);
+}
+}&lt;/p&gt;
+
+&lt;p&gt;protected override bool IsAuthorized(System.Web.Http.Controllers.HttpActionContext actionContext)
+{
+var headers = actionContext.Request.Headers;
+var clientHash = headers.GetValues(XHMAC).FirstOrDefault();&lt;/p&gt;
+
+&lt;p&gt;var serverHash = getHashFromMessage(actionContext.Request);&lt;/p&gt;
+
+&lt;p&gt;if (clientHash.Equals(serverHash, StringComparison.InvariantCultureIgnoreCase))
+{
+return true;
+}
+else
+{
+return false;
+}&lt;/p&gt;
+
+&lt;p&gt;return true;
+}&lt;/p&gt;
+
+&lt;p&gt;private string getHashFromMessage(System.Net.Http.HttpRequestMessage requestMessage)
+{
+var headers = requestMessage.Headers;
+string timestamp = headers.GetValues(XTIMESTAMP).FirstOrDefault();
+var clientHash = headers.GetValues(XHMAC).FirstOrDefault();&lt;/p&gt;
+
+&lt;p&gt;byte[] content = System.Text.Encoding.UTF8.GetBytes(timestamp);
+byte[] secret = System.Text.Encoding.UTF8.GetBytes(SECRET);
+HMACSHA1 hmac = new HMACSHA1(secret);
+var serverHash = BitConverter.ToString(hmac.ComputeHash(content)).Replace(“-“, “”);&lt;/p&gt;
+
+&lt;p&gt;return serverHash;
+}
+}
+`
+&lt;strong&gt;Summary:&lt;/strong&gt;
+In the end the solution got a little bit dirty, i would have liked to use the pre defined headers for MD5-Content, but it seems that it’s not used anymore. Many people points against that it’s not needed due to support in lower level protocol (TCP).&lt;/p&gt;
+
+&lt;p&gt;References:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/&quot;&gt;http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.google.com/p/crypto-js/#HMAC&quot;&gt;https://code.google.com/p/crypto-js/#HMAC&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.angularjs.org/api/ng/service/$http&quot;&gt;https://docs.angularjs.org/api/ng/service/$http&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/&quot;&gt;http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.breezejs.com/documentation/controlling-ajax&quot;&gt;http://www.breezejs.com/documentation/controlling-ajax&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Breeze/breeze.js/blob/master/src/b00_breeze.ajax.jQuery.js&quot;&gt;https://github.com/Breeze/breeze.js/blob/master/src/b00_breeze.ajax.jQuery.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Hash-based_message_authentication_code&quot;&gt;http://en.wikipedia.org/wiki/Hash-based_message_authentication_code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/List_of_HTTP_header_fields&quot;&gt;http://en.wikipedia.org/wiki/List_of_HTTP_header_fields&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html&quot;&gt;http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>C++ style guide lines</title>
+   <link href="http://emilw.github.io//c++/2014/04/23/c-style-guide-lines/"/>
+   <updated>2014-04-23T21:23:24+02:00</updated>
+   <id>http://emilw.github.io/c++/2014/04/23/c-style-guide-lines</id>
+   <content type="html">&lt;p&gt;Google have nice C++ style guide lines:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml&quot;&gt;http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#TODO_Comments&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;and a coresponding cpplint that checks the style on the fly. The cpplint is a python script.&lt;/p&gt;
+
+&lt;p&gt;I have tested the cpplint incorporated in a build script in xcode(with xcodebuild) and it works great, all issues are shown directly in the IDE.
+More on the xcode build &lt;a href=&quot;http://lime.postback.se/2014/04/09/shared-staticuniversal-library-management-in-xcode/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;cpplint can be downloaded from: &lt;a href=&quot;http://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py&quot;&gt;http://google-styleguide.googlecode.com/svn/trunk/cpplint/cpplint.py&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Shared static library management in Xcode</title>
+   <link href="http://emilw.github.io//c++/xcode/2014/04/09/shared-staticuniversal-library-management-in-xcode/"/>
+   <updated>2014-04-09T18:10:22+02:00</updated>
+   <id>http://emilw.github.io/c++/xcode/2014/04/09/shared-staticuniversal-library-management-in-xcode</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Intro&lt;/strong&gt;
+In the work of creating a platform independent engine to a game, it was needed to create a library to be able to reuse the engine code on:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Iphone(arm64, armv7, armv7s)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Mac OS X(x86_64)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Iphone simulator(i386)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To get this working there are different possibilities to get it up and running:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Using a static(universal) library(Linux/Unix/Mac: *.a/Windows: *.lib) = Is hardly linked to the software that uses it.(&lt;a href=&quot;http://www.ilkda.com/compile/Static_Versus_Dynamic.htm&quot;&gt;http://www.ilkda.com/compile/Static_Versus_Dynamic.htm&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Using dynamic library(Linux/Unix/Mac: *.dynlib/Window: *.dll). = Can be reused by others, not bundled with the end software. See above link&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Using a submodule structure in Git retrieving the code from there and by that, keep maintenance of the engine at one place. = Just a different way to include the code in the output. Same as one but with the full source included.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I selected number one.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is what i did&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Creation of a new project for the library:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;New workspace, mainly to be able to use Xcode as “multi instances”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;New project, output type library&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Build the project, output is usually under: /Users/User/Library/Developer/Xcode/DerivedData/TrafficEngine-draogbhagfycjbcujyfmmminmoey/Build/Products/Debug/MyOutput.
+(I find it quite annoying that it’s hard to get here through the Finder). Use Go -&amp;gt; /Users/User/Library to navigate there.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the consuming project, go to Project-&amp;gt;Framework or if you are in a C/C++ project go to Project settings-&amp;gt;Target-&amp;gt;Build Phases-&amp;gt;Link Binary with Libraries.
+(It might be hard to select the library due to that it’s not visible in the select other framework dialog picker. I did a drag and drop from finder into Xcode, that worked nice.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;To find the headers in the consuming project, go into project settings and add the path to your lib in the “Header search Paths”. Add it hard coded. I think that the “real” ones that are installed in the Libraries/Frameworks.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With the above configuration i was able to produce a library for a given architecture. It will not get me to the goal of having one lib for Iphone Simulator and the Iphone, that makes it quite useless for iterative testing of the engine from different platforms. The solution to this is universal library. The idea is to include all of the builds to one library, e.g. both x86 and arm7 in the same library. This means that one it’s enough with one build and from the consumer point of view they can use the same library file.&lt;/p&gt;
+
+&lt;p&gt;Where i ended up then, was to do the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add an additional Target to the project, select Aggregate&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add a new step in the Build phase called Run script&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add the following script:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;
+# define output folder environment variable
+UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;step-1-build-device-and-simulator-versions&quot;&gt;Step 1. Build Device and Simulator versions&lt;/h1&gt;
+&lt;p&gt;echo “Building iphoneos”
+xcodebuild -target TrafficEngine ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos BUILD_DIR=”${BUILD_DIR}” BUILD_ROOT=”${BUILD_ROOT}”
+echo “Building iphonesimulator”
+xcodebuild -target TrafficEngine -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=”${BUILD_DIR}” BUILD_ROOT=”${BUILD_ROOT}”
+#xcodebuild -target TrafficEngine -configuration ${CONFIGURATION} -sdk macosx -arch x86_64 BUILD_DIR=”${BUILD_DIR}” BUILD_ROOT=”${BUILD_ROOT}”&lt;/p&gt;
+
+&lt;p&gt;echo “Building done!”
+# make sure the output directory exists
+echo “Creating output folder for universal lib”
+mkdir -p “${UNIVERSAL_OUTPUTFOLDER}”&lt;/p&gt;
+
+&lt;h1 id=&quot;step-2-create-universal-binary-file-using-lipo&quot;&gt;Step 2. Create universal binary file using lipo&lt;/h1&gt;
+&lt;p&gt;lipo -create -output “${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a” “${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a” “${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a”&lt;/p&gt;
+
+&lt;h1 id=&quot;last-touch-copy-the-header-files-just-for-convenience&quot;&gt;Last touch. copy the header files. Just for convenience&lt;/h1&gt;
+&lt;p&gt;cp -R “${BUILD_DIR}/${CONFIGURATION}-iphoneos/include” “${UNIVERSAL_OUTPUTFOLDER}/”
+Remember to check the project configuration, e.g. architectures available etc. Your project settings can limit this script due to that it reads the default from that config.&lt;/p&gt;
+
+&lt;p&gt;It was also helpful to get a full list of all the variables in the build process:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt;xcodebuild -project myProj.xcodeproj -target &quot;myTarg&quot; -showBuildSettings&amp;lt;/code&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Warning, when doing some changes to the projects etc. and fiddling with the file Debug output paths etc. i saw that Xcode did not update the new paths to the lib correctly. In project settings-&amp;gt;Target-&amp;gt;Search Paths, the old path was still in the list. So it looks like if you remove a lib, the search path still stays for the one you removed.
+E.g. Debug was still there, even though i removed the lib in debug and replaced it with the one in Debug-Universal.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Remember:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set the target build used in the script to have Only active architecture set to No.&lt;/li&gt;
+  &lt;li&gt;Use lipo -info libMyLib to get information about what architectures are in the library&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://wiki.genexus.com/commwiki/servlet/hwiki?Creating+an+Universal+Library+for+iOS&quot;&gt;http://wiki.genexus.com/commwiki/servlet/hwiki?Creating+an+Universal+Library+for+iOS&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html&quot;&gt;https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.raywenderlich.com/41377/creating-a-static-library-in-ios-tutorial&quot;&gt;http://www.raywenderlich.com/41377/creating-a-static-library-in-ios-tutorial&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.blog.montgomerie.net/easy-xcode-static-library-subprojects-and-submodules&quot;&gt;http://www.blog.montgomerie.net/easy-xcode-static-library-subprojects-and-submodules&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://slidetorock.com/blog/using-a-static-library-in-xcode-4.html&quot;&gt;http://slidetorock.com/blog/using-a-static-library-in-xcode-4.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Linux/Unix root folder structure to remember</title>
+   <link href="http://emilw.github.io//linux/unix/2014/04/09/linuxunix-root-folder-structure-to-member/"/>
+   <updated>2014-04-09T14:03:45+02:00</updated>
+   <id>http://emilw.github.io/linux/unix/2014/04/09/linuxunix-root-folder-structure-to-member</id>
+   <content type="html">&lt;p&gt;Overview image that summarize it nicely.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://static.thegeekstuff.com/wp-content/uploads/2010/11/filesystem-structure.png&quot; alt=&quot;Overview image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The full explanation can be found at: &lt;a href=&quot;http://www.thegeekstuff.com/2010/09/linux-file-system-structure/&quot;&gt;http://www.thegeekstuff.com/2010/09/linux-file-system-structure/&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>GIT stuff</title>
+   <link href="http://emilw.github.io//tips/version%20control/2014/04/08/git-stuff/"/>
+   <updated>2014-04-08T13:45:12+02:00</updated>
+   <id>http://emilw.github.io/tips/version%20control/2014/04/08/git-stuff</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Create a new repo&lt;/strong&gt;
+Move to the directory where you have your existing project
+`
+$git init directory
+$git add .
+$git commit -m ‘First commit’
+$git rm –cached FilesToTakeAwayFromStagingButNotFromDisk//Typically generated files
+$git remote add origin https://github.com/user/Repo.git
+$git push
+`&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;General about the file tracking&lt;/strong&gt;
+The file tracking works as the following. The sequence below will show how a file is treated all the way to the remote origin/master.
+FileA.cpp is changed, one line is added with “//Hello”
+`
+$git status
+`
+Will show that one file is untracked
+`
+$git add FileA.cpp
+$git status
+`
+The file FileA.cpp is added to the staging index.
+The file FileA.cpp is changed again, with a new line “//Dude” added after “//Hello”.
+`
+$git status
+`
+Will show that FileA.cpp is shown in the staged section and in the untracked section.
+`
+$git diff
+`
+Will show the difference between “//Dude” and “//Hello”
+`
+$git diff origin/master
+`
+Will show the difference between point zero(Before “//Dude” was added) and “//Dude \n //Hello”.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+$git commit -m &quot;A really important change&quot;
+$git status
+&lt;/code&gt;
+Will show that there is one commit done.
+Still the change where “//Hello” is untracked and will show up.&lt;/p&gt;
+
+&lt;p&gt;So where are we?
+`
+$git diff //Shows the diff between unstaged and staged
+$git diff master //Shows the diff between unstaged and master
+$git diff origin/master //Shows the diff between unstaged and the remote origin/master
+`&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Branching/Merging&lt;/strong&gt;
+Some information about how to branch and how to merge:&lt;/p&gt;
+
+&lt;p&gt;`
+$git branch //Show all branches
+$git branch add TestBranch //Adds the branch TestBranch
+$git checkout TestBranch //Switch to TestBranch
+//Changing a file, staging it and committing it to the TestBranch
+$git checkout master //Switching to master
+$git show-ref //Shows the pointers in the different branches. Note that it points to different for the different branches
+$git merge TestBranch //Merge the commit from TestBranch
+$git show-ref //Now you can see that the pointers for Master and TestBranch point to the same commit&lt;/p&gt;
+
+&lt;p&gt;$git push –all -u //Pushes all branches in the repository to the central repo. This will send the newly created branch from above&lt;/p&gt;
+
+&lt;p&gt;//Clean up after fixing is done
+$git branch -d TestBranch //Remove the local branch
+$git branch -d -r origin/TestBranch //Remove the local tracking references
+$git push origin :TestBranch //Delete TestBranch from server&lt;/p&gt;
+
+&lt;p&gt;`&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mixed stuff&lt;/strong&gt;
+Some nice to have commands:
+`
+$git log –pretty=oneline //Shows the history in a nicer way&lt;/p&gt;
+
+&lt;p&gt;//Resetting commits and moving Header pointer
+git reset –hard HEAD~1 //Moves the pointer to the last commit and leaves the working tree in that state
+git reset HEAD~1 //Same as above, but all files stays in the working file directory
+git reset –soft HEAD~1 //Same as above, but even the indexes stays. Run commit again and the same commit is created without adding any files to the index.&lt;/p&gt;
+
+&lt;p&gt;$git reset  //Will move the HEAD pointer to the commit specified. Same as undoing a commit.
+$git log –stat //To see how much is changed in different files
+$git commit –amend //Adds the staged files to the latest commit. Good if you forgot to add a file to the index before committing.
+$git push origin –delete FeatureBranch1 //Deletes the branch in the remote repository
+$git branch -d FeatureBranch1 //Removes the branch locally
+$git branch -d -r origin/FeatureBranch1 //Removes the reference to the remote branch, at next pull it will get updated again&lt;/p&gt;
+
+&lt;p&gt;`&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References/Good resources&lt;/strong&gt;
+- http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging
+- https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Nice shape intersection example </title>
+   <link href="http://emilw.github.io//game/tips/2014/03/30/nice-shape-intersection-example/"/>
+   <updated>2014-03-30T16:04:20+02:00</updated>
+   <id>http://emilw.github.io/game/tips/2014/03/30/nice-shape-intersection-example</id>
+   <content type="html">&lt;p&gt;Really nice interactive examples for how to detect collisions etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://silentmatt.com/rectangle-intersection/&quot;&gt;http://silentmatt.com/rectangle-intersection/&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Developer podcasts</title>
+   <link href="http://emilw.github.io//tips/2014/03/13/developer-podcasts/"/>
+   <updated>2014-03-13T08:13:40+01:00</updated>
+   <id>http://emilw.github.io/tips/2014/03/13/developer-podcasts</id>
+   <content type="html">&lt;p&gt;Nice page summarizing the best developer podcasts.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://simpleprogrammer.com/2014/03/10/ultimate-list-developer-podcasts/&quot;&gt;http://simpleprogrammer.com/2014/03/10/ultimate-list-developer-podcasts/&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Nice way to find e-books</title>
+   <link href="http://emilw.github.io//tips/2014/03/06/nice-way-to-find-e-books/"/>
+   <updated>2014-03-06T14:27:19+01:00</updated>
+   <id>http://emilw.github.io/tips/2014/03/06/nice-way-to-find-e-books</id>
+   <content type="html">&lt;p&gt;I came across this search engine to find free ebooks. Works great.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://it-ebooks-search.info/&quot;&gt;http://it-ebooks-search.info/&lt;/a&gt;&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Selecting a game engine</title>
+   <link href="http://emilw.github.io//3d/game/2014/03/03/selecting-a-game-engine/"/>
+   <updated>2014-03-03T17:16:23+01:00</updated>
+   <id>http://emilw.github.io/3d/game/2014/03/03/selecting-a-game-engine</id>
+   <content type="html">&lt;p&gt;As a side project i will try to do a game, i have not been doing anything like this since school in the Computer graphics course.&lt;/p&gt;
+
+&lt;p&gt;My main aim was to create a 2D sprites game to deploy on different platforms.&lt;/p&gt;
+
+&lt;p&gt;I went through the list below with gaming engines.&lt;/p&gt;
+
+&lt;p&gt;I looked through, &lt;a href=&quot;http://en.wikipedia.org/wiki/List_of_game_engines&quot;&gt;http://en.wikipedia.org/wiki/List_of_game_engines&lt;/a&gt;, and &lt;a href=&quot;http://www.moddb.com/engines/top&quot;&gt;http://www.moddb.com/engines/top&lt;/a&gt;, checked:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://unity3d.com/&quot;&gt;https://unity3d.com/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.unrealengine.com/udk/downloads/&quot;&gt;http://www.unrealengine.com/udk/downloads/&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.garagegames.com/products/torque-3d/licensing&quot;&gt;http://www.garagegames.com/products/torque-3d/licensing&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table class=&quot;table table-striped&quot;&gt;
+
+&lt;tr&gt;
+Engine
+Pros
+Cons
+&lt;/tr&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+
+&lt;td&gt;Unity
+&lt;/td&gt;
+
+&lt;td&gt;Uses .NET as scripting languge
+&lt;/td&gt;
+
+&lt;td&gt;The free version might be limiting, can be to expensive to use the license after a while.
+See more here: [http://www.moddb.com/engines/unity/reviews](http://www.moddb.com/engines/unity/reviews)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+
+&lt;td&gt;Unreal
+&lt;/td&gt;
+
+&lt;td&gt;Free
+&lt;/td&gt;
+
+&lt;td&gt;To big for my purpose
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+
+&lt;td&gt;Torque-3D/2D
+&lt;/td&gt;
+
+&lt;td&gt;To be evaluated
+&lt;/td&gt;
+
+&lt;td&gt;To be evaluated
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Getting nice bootstrap tables</title>
+   <link href="http://emilw.github.io//wordpress/2014/02/18/getting-nice-bootstrap-tables/"/>
+   <updated>2014-02-18T21:04:31+01:00</updated>
+   <id>http://emilw.github.io/wordpress/2014/02/18/getting-nice-bootstrap-tables</id>
+   <content type="html">&lt;p&gt;To get nice tables from Bootstrap available in Wordpress the following can be done to incorporate them in the a wordpress blog.&lt;/p&gt;
+
+&lt;p&gt;Add the css code below to the Theme settings custom css:
+[learn_more caption=”The CSS code for tables from bootstrap”]&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+/*Table section from bootstrap------------------------------------------------------------------------------------------------- */&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;table {
+max-width: 100%;
+}&lt;/p&gt;
+
+&lt;p&gt;th {
+text-align: left;
+}&lt;/p&gt;
+
+&lt;p&gt;.table {
+width: 100%;
+margin-bottom: 20px;
+}&lt;/p&gt;
+
+&lt;p&gt;.table &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table &amp;gt; tbody &amp;gt; tr &amp;gt; th,
+.table &amp;gt; tfoot &amp;gt; tr &amp;gt; th,
+.table &amp;gt; thead &amp;gt; tr &amp;gt; td,
+.table &amp;gt; tbody &amp;gt; tr &amp;gt; td,
+.table &amp;gt; tfoot &amp;gt; tr &amp;gt; td {
+padding: 8px;
+line-height: 1.428571429;
+vertical-align: top;
+border-top: 1px solid #ddd;
+}&lt;/p&gt;
+
+&lt;p&gt;.table &amp;gt; thead &amp;gt; tr &amp;gt; th {
+vertical-align: bottom;
+border-bottom: 2px solid #ddd;
+}&lt;/p&gt;
+
+&lt;p&gt;.table &amp;gt; caption + thead &amp;gt; tr:first-child &amp;gt; th,
+.table &amp;gt; colgroup + thead &amp;gt; tr:first-child &amp;gt; th,
+.table &amp;gt; thead:first-child &amp;gt; tr:first-child &amp;gt; th,
+.table &amp;gt; caption + thead &amp;gt; tr:first-child &amp;gt; td,
+.table &amp;gt; colgroup + thead &amp;gt; tr:first-child &amp;gt; td,
+.table &amp;gt; thead:first-child &amp;gt; tr:first-child &amp;gt; td {
+border-top: 0;
+}&lt;/p&gt;
+
+&lt;p&gt;.table &amp;gt; tbody + tbody {
+border-top: 2px solid #ddd;
+}&lt;/p&gt;
+
+&lt;p&gt;.table .table {
+background-color: #fff;
+}&lt;/p&gt;
+
+&lt;p&gt;.table-condensed &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table-condensed &amp;gt; tbody &amp;gt; tr &amp;gt; th,
+.table-condensed &amp;gt; tfoot &amp;gt; tr &amp;gt; th,
+.table-condensed &amp;gt; thead &amp;gt; tr &amp;gt; td,
+.table-condensed &amp;gt; tbody &amp;gt; tr &amp;gt; td,
+.table-condensed &amp;gt; tfoot &amp;gt; tr &amp;gt; td {
+padding: 5px;
+}&lt;/p&gt;
+
+&lt;p&gt;.table-bordered {
+border: 1px solid #ddd;
+}&lt;/p&gt;
+
+&lt;p&gt;.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table-bordered &amp;gt; tbody &amp;gt; tr &amp;gt; th,
+.table-bordered &amp;gt; tfoot &amp;gt; tr &amp;gt; th,
+.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; td,
+.table-bordered &amp;gt; tbody &amp;gt; tr &amp;gt; td,
+.table-bordered &amp;gt; tfoot &amp;gt; tr &amp;gt; td {
+border: 1px solid #ddd;
+}&lt;/p&gt;
+
+&lt;p&gt;.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; td {
+border-bottom-width: 2px;
+}&lt;/p&gt;
+
+&lt;p&gt;.table-striped &amp;gt; tbody &amp;gt; tr:nth-child(odd) &amp;gt; td,
+.table-striped &amp;gt; tbody &amp;gt; tr:nth-child(odd) &amp;gt; th {
+background-color: #eaeaea;
+}&lt;/p&gt;
+
+&lt;p&gt;.table-hover &amp;gt; tbody &amp;gt; tr:hover &amp;gt; td,
+.table-hover &amp;gt; tbody &amp;gt; tr:hover &amp;gt; th {
+background-color: #f5f5f5;
+}&lt;/p&gt;
+
+&lt;p&gt;[/learn_more]&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Decorate the table according to Bootstraps reference, at [http://getbootstrap.com/2.3.2/base-css.html#tables](http://getbootstrap.com/2.3.2/base-css.html#tables)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;classes: &lt;/code&gt;&lt;code&gt;table, table-striped, table-bordered, table-hover, table-condensed
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt; &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Example can be found the at the &lt;a href=&quot;http://lime.postback.se/2014/02/18/basic-dns/&quot;&gt;DNS&lt;/a&gt; post.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Basic DNS</title>
+   <link href="http://emilw.github.io//dns/2014/02/18/basic-dns/"/>
+   <updated>2014-02-18T16:05:57+01:00</updated>
+   <id>http://emilw.github.io/dns/2014/02/18/basic-dns</id>
+   <content type="html">&lt;p&gt;Some basic DNS stuff to remember:&lt;/p&gt;
+
+&lt;p&gt;Three types:&lt;/p&gt;
+
+&lt;p&gt;CNAME = Redirect to another host name. An alias for another domain name&lt;/p&gt;
+
+&lt;p&gt;A = Main pointer for to a IP number&lt;/p&gt;
+
+&lt;p&gt;MX = Mail, can be to a host name&lt;/p&gt;
+
+&lt;table class=&quot;table table-striped&quot;&gt;
+
+&lt;tr&gt;
+Adress
+Type
+Time to live(TTL)
+Data
+Description
+&lt;/tr&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+
+&lt;td&gt;lime.postback.se
+&lt;/td&gt;
+
+&lt;td&gt;A
+&lt;/td&gt;
+
+&lt;td&gt;3360
+&lt;/td&gt;
+
+&lt;td&gt;192.168.1.12
+&lt;/td&gt;
+
+&lt;td&gt;Points all traffic to lime.postback.se to the ip adress in the data column
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+
+&lt;td&gt;*.lime.postback.se
+&lt;/td&gt;
+
+&lt;td&gt;A
+&lt;/td&gt;
+
+&lt;td&gt;3360
+&lt;/td&gt;
+
+&lt;td&gt;192.168.1.12
+&lt;/td&gt;
+
+&lt;td&gt;Wild card, everything before lime.postback.se is redirected to lime.postback.se. Example. dummy.lime.postback.se
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+
+&lt;td&gt;testing.postback.se
+&lt;/td&gt;
+
+&lt;td&gt;CNAME
+&lt;/td&gt;
+
+&lt;td&gt;3360
+&lt;/td&gt;
+
+&lt;td&gt;lime.postback.se
+&lt;/td&gt;
+
+&lt;td&gt;Redirects testing.postback.se to lime.postback.se
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+
+&lt;td&gt;lime.postback.se
+&lt;/td&gt;
+
+&lt;td&gt;MX
+&lt;/td&gt;
+
+&lt;td&gt;3360
+&lt;/td&gt;
+
+&lt;td&gt;mailserver123.mrmail.se
+&lt;/td&gt;
+
+&lt;td&gt;Translates lime.postback.se to mailserver123.mrmail.se, this happens at a mail request
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+
+&lt;td&gt;mail.postback.se
+&lt;/td&gt;
+
+&lt;td&gt;CNAME
+&lt;/td&gt;
+
+&lt;td&gt;3360
+&lt;/td&gt;
+
+&lt;td&gt;mailserver123.mrmail.se
+&lt;/td&gt;
+
+&lt;td&gt;Handles the commonly used mail.* pattern when specifying the mail server. This redirect to a central SMTP server for instance.
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Read more:
+&lt;a href=&quot;http://sv.wikipedia.org/wiki/CNAME_record&quot;&gt;http://sv.wikipedia.org/wiki/CNAME_record&lt;/a&gt;
+&lt;a href=&quot;http://sv.wikipedia.org/wiki/DNS&quot;&gt;http://sv.wikipedia.org/wiki/DNS&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

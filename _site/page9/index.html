@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      KnowledgeLog &middot; Log stuff
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="KnowledgeLog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">KnowledgeLog</a>
+          <small>Log stuff</small>
+        </h3>
+      </header>
+
+      <main>
+        <table class="table table-striped">
+<thead>
+<tr>
+<th>Post title</th>
+<th>Tags</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+  
+<tr>
+<td><a href="/c++/2014/11/01/make-files-recap/">Make files recap</a>
+</td>
+<td></td>
+<td>01 Nov 2014</td>
+</tr>
+
+<tr>
+<td><a href="/tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master/">GIT keeping feature branch up to date with master</a>
+</td>
+<td></td>
+<td>01 Nov 2014</td>
+</tr>
+
+<tr>
+<td><a href="/tips/version%20control/2014/10/28/git-stash/">GIT Stash</a>
+</td>
+<td></td>
+<td>28 Oct 2014</td>
+</tr>
+
+<tr>
+<td><a href="/automation/javascript/2014/08/04/buildprocess-with-grunt-js/">Buildprocess with Grunt.js</a>
+</td>
+<td></td>
+<td>04 Aug 2014</td>
+</tr>
+
+<tr>
+<td><a href="/game/http/javascript/security/uncategorised/2014/07/08/securing-a-http-service-with-hmac/">Securing a HTTP service with HMAC</a>
+</td>
+<td></td>
+<td>08 Jul 2014</td>
+</tr>
+
+<tr>
+<td><a href="/c++/2014/04/23/c-style-guide-lines/">C++ style guide lines</a>
+</td>
+<td></td>
+<td>23 Apr 2014</td>
+</tr>
+
+<tr>
+<td><a href="/c++/xcode/2014/04/09/shared-staticuniversal-library-management-in-xcode/">Shared static library management in Xcode</a>
+</td>
+<td></td>
+<td>09 Apr 2014</td>
+</tr>
+
+<tr>
+<td><a href="/linux/unix/2014/04/09/linuxunix-root-folder-structure-to-member/">Linux/Unix root folder structure to remember</a>
+</td>
+<td></td>
+<td>09 Apr 2014</td>
+</tr>
+
+<tr>
+<td><a href="/tips/version%20control/2014/04/08/git-stuff/">GIT stuff</a>
+</td>
+<td></td>
+<td>08 Apr 2014</td>
+</tr>
+
+<tr>
+<td><a href="/game/tips/2014/03/30/nice-shape-intersection-example/">Nice shape intersection example </a>
+</td>
+<td></td>
+<td>30 Mar 2014</td>
+</tr>
+
+<tr>
+<td><a href="/tips/2014/03/13/developer-podcasts/">Developer podcasts</a>
+</td>
+<td></td>
+<td>13 Mar 2014</td>
+</tr>
+
+<tr>
+<td><a href="/tips/2014/03/06/nice-way-to-find-e-books/">Nice way to find e-books</a>
+</td>
+<td></td>
+<td>06 Mar 2014</td>
+</tr>
+
+<tr>
+<td><a href="/3d/game/2014/03/03/selecting-a-game-engine/">Selecting a game engine</a>
+</td>
+<td></td>
+<td>03 Mar 2014</td>
+</tr>
+
+<tr>
+<td><a href="/wordpress/2014/02/18/getting-nice-bootstrap-tables/">Getting nice bootstrap tables</a>
+</td>
+<td></td>
+<td>18 Feb 2014</td>
+</tr>
+
+<tr>
+<td><a href="/dns/2014/02/18/basic-dns/">Basic DNS</a>
+</td>
+<td></td>
+<td>18 Feb 2014</td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="posts">
+  
+  <article class="post">
+    <h1 class="post-title">
+      <a href="/tips/version%20control/2014/04/08/git-stuff/">
+        GIT stuff
+      </a>
+    </h1>
+
+    <time datetime="2014-04-08T13:45:12+02:00" class="post-date">08 Apr 2014</time>
+
+    <p><strong>Create a new repo</strong>
+Move to the directory where you have your existing project
+`
+$git init directory
+$git add .
+$git commit -m ‘First commit’
+$git rm –cached FilesToTakeAwayFromStagingButNotFromDisk//Typically generated files
+$git remote add origin https://github.com/user/Repo.git
+$git push
+`</p>
+
+<p><strong>General about the file tracking</strong>
+The file tracking works as the following. The sequence below will show how a file is treated all the way to the remote origin/master.
+FileA.cpp is changed, one line is added with “//Hello”
+`
+$git status
+`
+Will show that one file is untracked
+`
+$git add FileA.cpp
+$git status
+`
+The file FileA.cpp is added to the staging index.
+The file FileA.cpp is changed again, with a new line “//Dude” added after “//Hello”.
+`
+$git status
+`
+Will show that FileA.cpp is shown in the staged section and in the untracked section.
+`
+$git diff
+`
+Will show the difference between “//Dude” and “//Hello”
+`
+$git diff origin/master
+`
+Will show the difference between point zero(Before “//Dude” was added) and “//Dude \n //Hello”.</p>
+
+<p><code>
+$git commit -m "A really important change"
+$git status
+</code>
+Will show that there is one commit done.
+Still the change where “//Hello” is untracked and will show up.</p>
+
+<p>So where are we?
+`
+$git diff //Shows the diff between unstaged and staged
+$git diff master //Shows the diff between unstaged and master
+$git diff origin/master //Shows the diff between unstaged and the remote origin/master
+`</p>
+
+<p><strong>Branching/Merging</strong>
+Some information about how to branch and how to merge:</p>
+
+<p>`
+$git branch //Show all branches
+$git branch add TestBranch //Adds the branch TestBranch
+$git checkout TestBranch //Switch to TestBranch
+//Changing a file, staging it and committing it to the TestBranch
+$git checkout master //Switching to master
+$git show-ref //Shows the pointers in the different branches. Note that it points to different for the different branches
+$git merge TestBranch //Merge the commit from TestBranch
+$git show-ref //Now you can see that the pointers for Master and TestBranch point to the same commit</p>
+
+<p>$git push –all -u //Pushes all branches in the repository to the central repo. This will send the newly created branch from above</p>
+
+<p>//Clean up after fixing is done
+$git branch -d TestBranch //Remove the local branch
+$git branch -d -r origin/TestBranch //Remove the local tracking references
+$git push origin :TestBranch //Delete TestBranch from server</p>
+
+<p>`</p>
+
+<p><strong>Mixed stuff</strong>
+Some nice to have commands:
+`
+$git log –pretty=oneline //Shows the history in a nicer way</p>
+
+<p>//Resetting commits and moving Header pointer
+git reset –hard HEAD~1 //Moves the pointer to the last commit and leaves the working tree in that state
+git reset HEAD~1 //Same as above, but all files stays in the working file directory
+git reset –soft HEAD~1 //Same as above, but even the indexes stays. Run commit again and the same commit is created without adding any files to the index.</p>
+
+<p>$git reset  //Will move the HEAD pointer to the commit specified. Same as undoing a commit.
+$git log –stat //To see how much is changed in different files
+$git commit –amend //Adds the staged files to the latest commit. Good if you forgot to add a file to the index before committing.
+$git push origin –delete FeatureBranch1 //Deletes the branch in the remote repository
+$git branch -d FeatureBranch1 //Removes the branch locally
+$git branch -d -r origin/FeatureBranch1 //Removes the reference to the remote branch, at next pull it will get updated again</p>
+
+<p>`</p>
+
+<p><strong>References/Good resources</strong>
+- http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging
+- https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches</p>
+
+  </article>
+  
+</div>
+
+<div class="pagination">
+  
+    <a class="pagination-item older" href="/page10">Older</a>
+  
+  
+    
+      <a class="pagination-item newer" href="/page8">Newer</a>
+    
+  
+</div>
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2015-06-22T13:39:33+02:00">2015</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

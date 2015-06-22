@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Securing a HTTP service with HMAC &middot; KnowledgeLog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="KnowledgeLog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">KnowledgeLog</a>
+          <small>Log stuff</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Securing a HTTP service with HMAC</h1>
+  <time datetime="2014-07-08T14:29:50+02:00" class="page-date">08 Jul 2014</time>
+  <p><strong>Intro:</strong></p>
+
+<p>For a game i wanted to publish the highscore online. To be able to publish it online i needed a REST/HTTP service that could accept the highscore update. The service needed to be secure to make sure that only my game could update the highscore but i wanted to avoid forcing the game user to have to give a username and password to do this.</p>
+
+<p>The straight forward approach would have been to use SSL at the web site and basic authentication with the same uid and pwd for every client. The problem though is that i do not have SSL support at my hosting provider….</p>
+
+<p>So i needed to make this work in another way. I checked different solutions and the most common one seems to be to use HMAC(Hashbased Message Authentication Code) to secure the calls. Read more: <a href="http://en.wikipedia.org/wiki/Hash-based_message_authentication_code">http://en.wikipedia.org/wiki/Hash-based_message_authentication_code</a>.</p>
+
+<p>The basic theory behind HMAC is to share a secret key to all devices/programs that are going to use your system. This key is used to hash the messages sent. The key is stored in a http request header field and validated on the server(that allso have the same key). There are some pitfalls with this solution, if you only hash the message with the key, you could have a “man in the middle” attack, where the message could be changed. To avoid this it’s important to include as much as possible from the http request itself so it’s possible to calculate a hash based on the content of the request. As an addition, it’s good to have a timestamp in a header to avoid replay attacks.</p>
+
+<p>I tested the solution in Javascript, and i noticed that there was a lot of the standard headers missing or not possible to set from Javascript. For instance was the MD5-Content header emtpy. This is a hash by itself of the message content. The MD5-Content and the secret key would be perfect input to the hash function.</p>
+
+<p>MD5 example on server side: <a href="http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/">http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/</a></p>
+
+<p>The algorithm for generating the HMAC key was SHA-1.</p>
+
+<p><strong>Overall flow:</strong>
+Defined two new http headers:
+- X-HMAC that holds the security hash
+- X-Timestamp that holds the time stamp from when the request was sent
+The client calculate the hash based on the security key and the X-Timestamp and sets that key in X-HMAC.
+The serverside does the same calculation with the pre shared key and the X-Timestamp and compares that value with the value in the header X-HMAC.</p>
+
+<p><strong>Details:</strong></p>
+
+<p>Client side(Web(Javascript) together with Angular):</p>
+
+<ul>
+  <li>I used <a href="https://code.google.com/p/crypto-js/#HMAC">https://code.google.com/p/crypto-js/#HMAC</a> as the client crypto library</li>
+  <li>Registered an interceptor in Angular.js for the http module to add the headers.
+`
+(function () {
+‘use strict’;</li>
+</ul>
+
+<p>angular.module(‘common’)
+.factory(‘hmacInterceptor’, [‘$log’, hmacInterceptor]);</p>
+
+<p>function hmacInterceptor($log) {</p>
+
+<p>$log.debug(‘In interceptor’);
+var sessionInjection = {
+request: function (config) {
+var now = new Date();
+var xTimestamp = now.toUTCString();
+config.headers[‘X-Timestamp’] = xTimestamp;
+config.headers[‘X-HMAC’] = CryptoJS.HmacSHA1(xTimestamp, “bybbe12345bybbe33333”);
+$log.debug(config.headers);
+return config;
+}
+};</p>
+
+<p>return sessionInjection;
+}
+})();
+`</p>
+
+<p>Server side(Web API/.NET):</p>
+
+<ul>
+  <li>Nice built in crypto support</li>
+  <li>Easy to extend the Authorization attribute to check the HMAC header instead</li>
+</ul>
+
+<p>`
+public class APIAuthorizationAttribute : AuthorizeAttribute
+{</p>
+
+<p>private string XHMAC = “X-HMAC”;
+private string XTIMESTAMP = “X-Timestamp”;</p>
+
+<p>private string SECRET;</p>
+
+<p>public APIAuthorizationAttribute()
+{
+try
+{
+SECRET = System.Configuration.ConfigurationManager.AppSettings[“HMACSecret”];
+}
+catch (Exception ex)
+{
+throw new Exception(“Failed to read secret from web config”, ex);
+}
+}</p>
+
+<p>protected override bool IsAuthorized(System.Web.Http.Controllers.HttpActionContext actionContext)
+{
+var headers = actionContext.Request.Headers;
+var clientHash = headers.GetValues(XHMAC).FirstOrDefault();</p>
+
+<p>var serverHash = getHashFromMessage(actionContext.Request);</p>
+
+<p>if (clientHash.Equals(serverHash, StringComparison.InvariantCultureIgnoreCase))
+{
+return true;
+}
+else
+{
+return false;
+}</p>
+
+<p>return true;
+}</p>
+
+<p>private string getHashFromMessage(System.Net.Http.HttpRequestMessage requestMessage)
+{
+var headers = requestMessage.Headers;
+string timestamp = headers.GetValues(XTIMESTAMP).FirstOrDefault();
+var clientHash = headers.GetValues(XHMAC).FirstOrDefault();</p>
+
+<p>byte[] content = System.Text.Encoding.UTF8.GetBytes(timestamp);
+byte[] secret = System.Text.Encoding.UTF8.GetBytes(SECRET);
+HMACSHA1 hmac = new HMACSHA1(secret);
+var serverHash = BitConverter.ToString(hmac.ComputeHash(content)).Replace(“-“, “”);</p>
+
+<p>return serverHash;
+}
+}
+`
+<strong>Summary:</strong>
+In the end the solution got a little bit dirty, i would have liked to use the pre defined headers for MD5-Content, but it seems that it’s not used anymore. Many people points against that it’s not needed due to support in lower level protocol (TCP).</p>
+
+<p>References:</p>
+
+<ul>
+  <li><a href="http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/">http://www.piotrwalat.net/hmac-authentication-in-asp-net-web-api/</a></li>
+  <li><a href="https://code.google.com/p/crypto-js/#HMAC">https://code.google.com/p/crypto-js/#HMAC</a></li>
+  <li><a href="https://docs.angularjs.org/api/ng/service/$http">https://docs.angularjs.org/api/ng/service/$http</a></li>
+  <li><a href="http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/">http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/</a></li>
+  <li><a href="http://www.breezejs.com/documentation/controlling-ajax">http://www.breezejs.com/documentation/controlling-ajax</a></li>
+  <li><a href="https://github.com/Breeze/breeze.js/blob/master/src/b00_breeze.ajax.jQuery.js">https://github.com/Breeze/breeze.js/blob/master/src/b00_breeze.ajax.jQuery.js</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Hash-based_message_authentication_code">http://en.wikipedia.org/wiki/Hash-based_message_authentication_code</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/List_of_HTTP_header_fields">http://en.wikipedia.org/wiki/List_of_HTTP_header_fields</a></li>
+  <li><a href="http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html">http://s3.amazonaws.com/doc/s3-developer-guide/RESTAuthentication.html</a></li>
+</ul>
+
+</article>
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="//c++/2014/11/01/make-files-recap/">
+            Make files recap
+            <small><time datetime="2014-11-01T17:16:13+01:00">01 Nov 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master/">
+            GIT keeping feature branch up to date with master
+            <small><time datetime="2014-11-01T17:10:06+01:00">01 Nov 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//tips/version%20control/2014/10/28/git-stash/">
+            GIT Stash
+            <small><time datetime="2014-10-28T12:39:55+01:00">28 Oct 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2015-06-22T13:39:33+02:00">2015</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

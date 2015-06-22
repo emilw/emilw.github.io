@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Getting nice bootstrap tables &middot; KnowledgeLog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="KnowledgeLog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">KnowledgeLog</a>
+          <small>Log stuff</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Getting nice bootstrap tables</h1>
+  <time datetime="2014-02-18T21:04:31+01:00" class="page-date">18 Feb 2014</time>
+  <p>To get nice tables from Bootstrap available in Wordpress the following can be done to incorporate them in the a wordpress blog.</p>
+
+<p>Add the css code below to the Theme settings custom css:
+[learn_more caption=”The CSS code for tables from bootstrap”]</p>
+
+<p><code>
+/*Table section from bootstrap------------------------------------------------------------------------------------------------- */</code></p>
+
+<p>table {
+max-width: 100%;
+}</p>
+
+<p>th {
+text-align: left;
+}</p>
+
+<p>.table {
+width: 100%;
+margin-bottom: 20px;
+}</p>
+
+<p>.table &gt; thead &gt; tr &gt; th,
+.table &gt; tbody &gt; tr &gt; th,
+.table &gt; tfoot &gt; tr &gt; th,
+.table &gt; thead &gt; tr &gt; td,
+.table &gt; tbody &gt; tr &gt; td,
+.table &gt; tfoot &gt; tr &gt; td {
+padding: 8px;
+line-height: 1.428571429;
+vertical-align: top;
+border-top: 1px solid #ddd;
+}</p>
+
+<p>.table &gt; thead &gt; tr &gt; th {
+vertical-align: bottom;
+border-bottom: 2px solid #ddd;
+}</p>
+
+<p>.table &gt; caption + thead &gt; tr:first-child &gt; th,
+.table &gt; colgroup + thead &gt; tr:first-child &gt; th,
+.table &gt; thead:first-child &gt; tr:first-child &gt; th,
+.table &gt; caption + thead &gt; tr:first-child &gt; td,
+.table &gt; colgroup + thead &gt; tr:first-child &gt; td,
+.table &gt; thead:first-child &gt; tr:first-child &gt; td {
+border-top: 0;
+}</p>
+
+<p>.table &gt; tbody + tbody {
+border-top: 2px solid #ddd;
+}</p>
+
+<p>.table .table {
+background-color: #fff;
+}</p>
+
+<p>.table-condensed &gt; thead &gt; tr &gt; th,
+.table-condensed &gt; tbody &gt; tr &gt; th,
+.table-condensed &gt; tfoot &gt; tr &gt; th,
+.table-condensed &gt; thead &gt; tr &gt; td,
+.table-condensed &gt; tbody &gt; tr &gt; td,
+.table-condensed &gt; tfoot &gt; tr &gt; td {
+padding: 5px;
+}</p>
+
+<p>.table-bordered {
+border: 1px solid #ddd;
+}</p>
+
+<p>.table-bordered &gt; thead &gt; tr &gt; th,
+.table-bordered &gt; tbody &gt; tr &gt; th,
+.table-bordered &gt; tfoot &gt; tr &gt; th,
+.table-bordered &gt; thead &gt; tr &gt; td,
+.table-bordered &gt; tbody &gt; tr &gt; td,
+.table-bordered &gt; tfoot &gt; tr &gt; td {
+border: 1px solid #ddd;
+}</p>
+
+<p>.table-bordered &gt; thead &gt; tr &gt; th,
+.table-bordered &gt; thead &gt; tr &gt; td {
+border-bottom-width: 2px;
+}</p>
+
+<p>.table-striped &gt; tbody &gt; tr:nth-child(odd) &gt; td,
+.table-striped &gt; tbody &gt; tr:nth-child(odd) &gt; th {
+background-color: #eaeaea;
+}</p>
+
+<p>.table-hover &gt; tbody &gt; tr:hover &gt; td,
+.table-hover &gt; tbody &gt; tr:hover &gt; th {
+background-color: #f5f5f5;
+}</p>
+
+<p>[/learn_more]</p>
+
+<p><code>Decorate the table according to Bootstraps reference, at [http://getbootstrap.com/2.3.2/base-css.html#tables](http://getbootstrap.com/2.3.2/base-css.html#tables)</code></p>
+
+<p><code>classes: </code><code>table, table-striped, table-bordered, table-hover, table-condensed
+</code></p>
+
+<p><code> </code></p>
+
+<p>Example can be found the at the <a href="http://lime.postback.se/2014/02/18/basic-dns/">DNS</a> post.</p>
+
+</article>
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="//c++/2014/11/01/make-files-recap/">
+            Make files recap
+            <small><time datetime="2014-11-01T17:16:13+01:00">01 Nov 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master/">
+            GIT keeping feature branch up to date with master
+            <small><time datetime="2014-11-01T17:10:06+01:00">01 Nov 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//tips/version%20control/2014/10/28/git-stash/">
+            GIT Stash
+            <small><time datetime="2014-10-28T12:39:55+01:00">28 Oct 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2015-06-22T13:39:33+02:00">2015</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

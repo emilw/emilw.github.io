@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Make files recap &middot; KnowledgeLog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="KnowledgeLog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">KnowledgeLog</a>
+          <small>Log stuff</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Make files recap</h1>
+  <time datetime="2014-11-01T17:16:13+01:00" class="page-date">01 Nov 2014</time>
+  <p>Below is a basic makefile:</p>
+
+<p>`
+//Setup what’s the end goal, in this case it’s client that should be resolved and what it depends on
+all: client</p>
+
+<p>//Link them to the final runnable file, e.g. client in this example
+client: main.o HttpClient.o HttpResponse.o StringBufferHelper.o URL.o TCPClient.o
+	g++ main.o HttpClient.o HttpResponse.o StringBufferHelper.o URL.o TCPClient.o -o client</p>
+
+<p>//Compile all source to object files
+main.o: main.cpp
+	g++ -c main.cpp</p>
+
+<p>HttpClient.o: HttpClient.cpp HttpClient.h
+	g++ -c HttpClient.cpp HttpClient.h</p>
+
+<p>HttpResponse.o: HttpResponse.cpp HttpResponse.h
+	g++ -c HttpResponse.cpp HttpResponse.h</p>
+
+<p>StringBufferHelper.o: StringBufferHelper.cpp StringBufferHelper.h
+	g++ -c StringBufferHelper.cpp StringBufferHelper.h</p>
+
+<p>URL.o: URL.cpp URL.h
+	g++ -c URL.cpp URL.h</p>
+
+<p>TCPClient.o: TCPClient.cpp TCPClient.h
+	g++ -c TCPClient.cpp TCPClient.h</p>
+
+<h1 id="helloo-hellocpp">hello.o: hello.cpp</h1>
+<p>#    g++ -c hello.cpp</p>
+
+<p>clean:
+	rm -rf *o client</p>
+
+<p>`</p>
+
+</article>
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="//tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master/">
+            GIT keeping feature branch up to date with master
+            <small><time datetime="2014-11-01T17:10:06+01:00">01 Nov 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//tips/version%20control/2014/10/28/git-stash/">
+            GIT Stash
+            <small><time datetime="2014-10-28T12:39:55+01:00">28 Oct 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="//automation/javascript/2014/08/04/buildprocess-with-grunt-js/">
+            Buildprocess with Grunt.js
+            <small><time datetime="2014-08-04T17:42:48+02:00">04 Aug 2014</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          &copy; <time datetime="2015-06-22T13:39:33+02:00">2015</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

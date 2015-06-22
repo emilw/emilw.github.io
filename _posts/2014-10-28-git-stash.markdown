@@ -1,0 +1,34 @@
+---
+author: lime.postback.se
+comments: true
+date: 2014-10-28 11:39:55+00:00
+layout: post
+slug: git-stash
+title: GIT Stash
+wordpress_id: 186
+categories:
+- Tips
+- Version control
+---
+
+If you make you want to upgrade your local repository with the latest changes, e.g. merge with non commited local files you can use the command stash.
+
+`
+//Stash the current work
+git stash
+
+//Check status, should be empty
+git status
+
+//Get the list of stashes
+git stash list
+
+//.....Do operations e.g.
+git pull
+
+//Apply the stash again
+git stash apply
+
+//Check status, the stashed files should be marked as before
+git status
+`

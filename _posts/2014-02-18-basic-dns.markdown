@@ -1,0 +1,124 @@
+---
+author: lime.postback.se
+comments: true
+date: 2014-02-18 15:05:57+00:00
+layout: post
+slug: basic-dns
+title: Basic DNS
+wordpress_id: 9
+categories:
+- DNS
+---
+
+Some basic DNS stuff to remember:
+
+Three types:
+
+CNAME = Redirect to another host name. An alias for another domain name
+
+A = Main pointer for to a IP number
+
+MX = Mail, can be to a host name
+
+
+<table class="table table-striped" >
+
+<tr >
+Adress
+Type
+Time to live(TTL)
+Data
+Description
+</tr>
+
+<tbody >
+<tr >
+
+<td >lime.postback.se
+</td>
+
+<td >A
+</td>
+
+<td >3360
+</td>
+
+<td >192.168.1.12
+</td>
+
+<td >Points all traffic to lime.postback.se to the ip adress in the data column
+</td>
+</tr>
+<tr >
+
+<td >*.lime.postback.se
+</td>
+
+<td >A
+</td>
+
+<td >3360
+</td>
+
+<td >192.168.1.12
+</td>
+
+<td >Wild card, everything before lime.postback.se is redirected to lime.postback.se. Example. dummy.lime.postback.se
+</td>
+</tr>
+<tr >
+
+<td >testing.postback.se
+</td>
+
+<td >CNAME
+</td>
+
+<td >3360
+</td>
+
+<td >lime.postback.se
+</td>
+
+<td >Redirects testing.postback.se to lime.postback.se
+</td>
+</tr>
+<tr >
+
+<td >lime.postback.se
+</td>
+
+<td >MX
+</td>
+
+<td >3360
+</td>
+
+<td >mailserver123.mrmail.se
+</td>
+
+<td >Translates lime.postback.se to mailserver123.mrmail.se, this happens at a mail request
+</td>
+</tr>
+<tr >
+
+<td >mail.postback.se
+</td>
+
+<td >CNAME
+</td>
+
+<td >3360
+</td>
+
+<td >mailserver123.mrmail.se
+</td>
+
+<td >Handles the commonly used mail.* pattern when specifying the mail server. This redirect to a central SMTP server for instance.
+</td>
+</tr>
+</tbody>
+</table>
+Read more:
+[http://sv.wikipedia.org/wiki/CNAME_record](http://sv.wikipedia.org/wiki/CNAME_record)
+[http://sv.wikipedia.org/wiki/DNS](http://sv.wikipedia.org/wiki/DNS)

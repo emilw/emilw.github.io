@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>KnowledgeLog</title>
- <link href="http://emilw.github.io/atom.xml" rel="self"/>
- <link href="http://emilw.github.io/"/>
- <updated>2015-06-22T13:54:43+02:00</updated>
+ <link href="http://emilw.github.iohttps://emilw.github.ioatom.xml" rel="self"/>
+ <link href="http://emilw.github.iohttps://emilw.github.io"/>
+ <updated>2015-06-22T14:49:32+02:00</updated>
  <id>http://emilw.github.io</id>
  <author>
    <name>Emil W</name>
@@ -14,7 +14,7 @@
  
  <entry>
    <title>Make files recap</title>
-   <link href="http://emilw.github.io//c++/2014/11/01/make-files-recap/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/c++/2014/11/01/make-files-recap/"/>
    <updated>2014-11-01T17:16:13+01:00</updated>
    <id>http://emilw.github.io/c++/2014/11/01/make-files-recap</id>
    <content type="html">&lt;p&gt;Below is a basic makefile:&lt;/p&gt;
@@ -58,7 +58,7 @@ main.o: main.cpp
  
  <entry>
    <title>GIT keeping feature branch up to date with master</title>
-   <link href="http://emilw.github.io//tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master/"/>
    <updated>2014-11-01T17:10:06+01:00</updated>
    <id>http://emilw.github.io/tips/version%20control/2014/11/01/git-keeping-feature-branch-up-to-date-with-master</id>
    <content type="html">&lt;p&gt;When working on a feature i started checking whats the best workflow to keep the feature branch updated against the master branch.
@@ -87,7 +87,7 @@ git commit -m “The great feature”&lt;/p&gt;
  
  <entry>
    <title>GIT Stash</title>
-   <link href="http://emilw.github.io//tips/version%20control/2014/10/28/git-stash/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/tips/version%20control/2014/10/28/git-stash/"/>
    <updated>2014-10-28T12:39:55+01:00</updated>
    <id>http://emilw.github.io/tips/version%20control/2014/10/28/git-stash</id>
    <content type="html">&lt;p&gt;If you make you want to upgrade your local repository with the latest changes, e.g. merge with non commited local files you can use the command stash.&lt;/p&gt;
@@ -116,7 +116,7 @@ git status
  
  <entry>
    <title>Buildprocess with Grunt.js</title>
-   <link href="http://emilw.github.io//automation/javascript/2014/08/04/buildprocess-with-grunt-js/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/automation/javascript/2014/08/04/buildprocess-with-grunt-js/"/>
    <updated>2014-08-04T17:42:48+02:00</updated>
    <id>http://emilw.github.io/automation/javascript/2014/08/04/buildprocess-with-grunt-js</id>
    <content type="html">&lt;p&gt;When i started my personal game project, i only used xcode to build the output libraries. After a while there was a lot of manual work related to scaling images, running UnitTests etc. so i started adding bash scripts that did this. The problem started to arise quite soon when it got hard to maintain. At the moment i read a blog post about Grunt.js that run on node.js. Due to that node.js can run on all platform, using Grunt.js would allow me to run the platform independent parts, e.g for C++, web or image management on all platforms. This seemed nice to me so i tried it.&lt;/p&gt;
@@ -208,7 +208,7 @@ Navigate to the root folder of the project from the command line
  
  <entry>
    <title>Securing a HTTP service with HMAC</title>
-   <link href="http://emilw.github.io//game/http/javascript/security/uncategorised/2014/07/08/securing-a-http-service-with-hmac/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/game/http/javascript/security/uncategorised/2014/07/08/securing-a-http-service-with-hmac/"/>
    <updated>2014-07-08T14:29:50+02:00</updated>
    <id>http://emilw.github.io/game/http/javascript/security/uncategorised/2014/07/08/securing-a-http-service-with-hmac</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;Intro:&lt;/strong&gt;&lt;/p&gt;
@@ -351,7 +351,7 @@ In the end the solution got a little bit dirty, i would have liked to use the pr
  
  <entry>
    <title>C++ style guide lines</title>
-   <link href="http://emilw.github.io//c++/2014/04/23/c-style-guide-lines/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/c++/2014/04/23/c-style-guide-lines/"/>
    <updated>2014-04-23T21:23:24+02:00</updated>
    <id>http://emilw.github.io/c++/2014/04/23/c-style-guide-lines</id>
    <content type="html">&lt;p&gt;Google have nice C++ style guide lines:&lt;/p&gt;
@@ -369,7 +369,7 @@ More on the xcode build &lt;a href=&quot;http://lime.postback.se/2014/04/09/shar
  
  <entry>
    <title>Shared static library management in Xcode</title>
-   <link href="http://emilw.github.io//c++/xcode/2014/04/09/shared-staticuniversal-library-management-in-xcode/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/c++/xcode/2014/04/09/shared-staticuniversal-library-management-in-xcode/"/>
    <updated>2014-04-09T18:10:22+02:00</updated>
    <id>http://emilw.github.io/c++/xcode/2014/04/09/shared-staticuniversal-library-management-in-xcode</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;Intro&lt;/strong&gt;
@@ -506,7 +506,7 @@ E.g. Debug was still there, even though i removed the lib in debug and replaced 
  
  <entry>
    <title>Linux/Unix root folder structure to remember</title>
-   <link href="http://emilw.github.io//linux/unix/2014/04/09/linuxunix-root-folder-structure-to-member/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/linux/unix/2014/04/09/linuxunix-root-folder-structure-to-member/"/>
    <updated>2014-04-09T14:03:45+02:00</updated>
    <id>http://emilw.github.io/linux/unix/2014/04/09/linuxunix-root-folder-structure-to-member</id>
    <content type="html">&lt;p&gt;Overview image that summarize it nicely.&lt;/p&gt;
@@ -519,7 +519,7 @@ E.g. Debug was still there, even though i removed the lib in debug and replaced 
  
  <entry>
    <title>GIT stuff</title>
-   <link href="http://emilw.github.io//tips/version%20control/2014/04/08/git-stuff/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/tips/version%20control/2014/04/08/git-stuff/"/>
    <updated>2014-04-08T13:45:12+02:00</updated>
    <id>http://emilw.github.io/tips/version%20control/2014/04/08/git-stuff</id>
    <content type="html">&lt;p&gt;&lt;strong&gt;Create a new repo&lt;/strong&gt;
@@ -622,7 +622,7 @@ $git branch -d -r origin/FeatureBranch1 //Removes the reference to the remote br
  
  <entry>
    <title>Nice shape intersection example </title>
-   <link href="http://emilw.github.io//game/tips/2014/03/30/nice-shape-intersection-example/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/game/tips/2014/03/30/nice-shape-intersection-example/"/>
    <updated>2014-03-30T16:04:20+02:00</updated>
    <id>http://emilw.github.io/game/tips/2014/03/30/nice-shape-intersection-example</id>
    <content type="html">&lt;p&gt;Really nice interactive examples for how to detect collisions etc.&lt;/p&gt;
@@ -634,7 +634,7 @@ $git branch -d -r origin/FeatureBranch1 //Removes the reference to the remote br
  
  <entry>
    <title>Developer podcasts</title>
-   <link href="http://emilw.github.io//tips/2014/03/13/developer-podcasts/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/tips/2014/03/13/developer-podcasts/"/>
    <updated>2014-03-13T08:13:40+01:00</updated>
    <id>http://emilw.github.io/tips/2014/03/13/developer-podcasts</id>
    <content type="html">&lt;p&gt;Nice page summarizing the best developer podcasts.&lt;/p&gt;
@@ -645,7 +645,7 @@ $git branch -d -r origin/FeatureBranch1 //Removes the reference to the remote br
  
  <entry>
    <title>Nice way to find e-books</title>
-   <link href="http://emilw.github.io//tips/2014/03/06/nice-way-to-find-e-books/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/tips/2014/03/06/nice-way-to-find-e-books/"/>
    <updated>2014-03-06T14:27:19+01:00</updated>
    <id>http://emilw.github.io/tips/2014/03/06/nice-way-to-find-e-books</id>
    <content type="html">&lt;p&gt;I came across this search engine to find free ebooks. Works great.&lt;/p&gt;
@@ -657,7 +657,7 @@ $git branch -d -r origin/FeatureBranch1 //Removes the reference to the remote br
  
  <entry>
    <title>Selecting a game engine</title>
-   <link href="http://emilw.github.io//3d/game/2014/03/03/selecting-a-game-engine/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/3d/game/2014/03/03/selecting-a-game-engine/"/>
    <updated>2014-03-03T17:16:23+01:00</updated>
    <id>http://emilw.github.io/3d/game/2014/03/03/selecting-a-game-engine</id>
    <content type="html">&lt;p&gt;As a side project i will try to do a game, i have not been doing anything like this since school in the Computer graphics course.&lt;/p&gt;
@@ -731,30 +731,28 @@ See more here: [http://www.moddb.com/engines/unity/reviews](http://www.moddb.co
  
  <entry>
    <title>Getting nice bootstrap tables</title>
-   <link href="http://emilw.github.io//wordpress/2014/02/18/getting-nice-bootstrap-tables/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/wordpress/2014/02/18/getting-nice-bootstrap-tables/"/>
    <updated>2014-02-18T21:04:31+01:00</updated>
    <id>http://emilw.github.io/wordpress/2014/02/18/getting-nice-bootstrap-tables</id>
-   <content type="html">&lt;p&gt;To get nice tables from Bootstrap available in Wordpress the following can be done to incorporate them in the a wordpress blog.&lt;/p&gt;
+   <content type="html">&lt;p&gt;To get nice tables from Bootstrap available in Wordpress the following can be done to incorporate them in the a wordpress blog.
+eedddd
+Add the css code below to the Theme settings custom css:&lt;/p&gt;
 
-&lt;p&gt;Add the css code below to the Theme settings custom css:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;table {
+  max-width: 100%;
+  }
 
-&lt;p&gt;```html
-/*Table section from bootstrap————————————————————————————————- */&lt;/p&gt;
+th {
+  text-align: left;
+  }
 
-&lt;p&gt;table {
-max-width: 100%;
-}&lt;/p&gt;
 
-&lt;p&gt;th {
-text-align: left;
-}&lt;/p&gt;
-
-&lt;p&gt;.table {
+.table {
 width: 100%;
 margin-bottom: 20px;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table &amp;gt; thead &amp;gt; tr &amp;gt; th,
 .table &amp;gt; tbody &amp;gt; tr &amp;gt; th,
 .table &amp;gt; tfoot &amp;gt; tr &amp;gt; th,
 .table &amp;gt; thead &amp;gt; tr &amp;gt; td,
@@ -764,72 +762,76 @@ padding: 8px;
 line-height: 1.428571429;
 vertical-align: top;
 border-top: 1px solid #ddd;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table &amp;gt; thead &amp;gt; tr &amp;gt; th {
+.table &amp;gt; thead &amp;gt; tr &amp;gt; th {
 vertical-align: bottom;
 border-bottom: 2px solid #ddd;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table &amp;gt; caption + thead &amp;gt; tr:first-child &amp;gt; th,
+.table &amp;gt; caption + thead &amp;gt; tr:first-child &amp;gt; th,
 .table &amp;gt; colgroup + thead &amp;gt; tr:first-child &amp;gt; th,
 .table &amp;gt; thead:first-child &amp;gt; tr:first-child &amp;gt; th,
 .table &amp;gt; caption + thead &amp;gt; tr:first-child &amp;gt; td,
 .table &amp;gt; colgroup + thead &amp;gt; tr:first-child &amp;gt; td,
 .table &amp;gt; thead:first-child &amp;gt; tr:first-child &amp;gt; td {
 border-top: 0;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table &amp;gt; tbody + tbody {
+.table &amp;gt; tbody + tbody {
 border-top: 2px solid #ddd;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table .table {
+.table .table {
 background-color: #fff;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table-condensed &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table-condensed &amp;gt; thead &amp;gt; tr &amp;gt; th,
 .table-condensed &amp;gt; tbody &amp;gt; tr &amp;gt; th,
 .table-condensed &amp;gt; tfoot &amp;gt; tr &amp;gt; th,
 .table-condensed &amp;gt; thead &amp;gt; tr &amp;gt; td,
 .table-condensed &amp;gt; tbody &amp;gt; tr &amp;gt; td,
 .table-condensed &amp;gt; tfoot &amp;gt; tr &amp;gt; td {
 padding: 5px;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table-bordered {
+.table-bordered {
 border: 1px solid #ddd;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; th,
 .table-bordered &amp;gt; tbody &amp;gt; tr &amp;gt; th,
 .table-bordered &amp;gt; tfoot &amp;gt; tr &amp;gt; th,
 .table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; td,
 .table-bordered &amp;gt; tbody &amp;gt; tr &amp;gt; td,
 .table-bordered &amp;gt; tfoot &amp;gt; tr &amp;gt; td {
 border: 1px solid #ddd;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; th,
+.table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; th,
 .table-bordered &amp;gt; thead &amp;gt; tr &amp;gt; td {
 border-bottom-width: 2px;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table-striped &amp;gt; tbody &amp;gt; tr:nth-child(odd) &amp;gt; td,
+.table-striped &amp;gt; tbody &amp;gt; tr:nth-child(odd) &amp;gt; td,
 .table-striped &amp;gt; tbody &amp;gt; tr:nth-child(odd) &amp;gt; th {
 background-color: #eaeaea;
-}&lt;/p&gt;
+}
 
-&lt;p&gt;.table-hover &amp;gt; tbody &amp;gt; tr:hover &amp;gt; td,
+.table-hover &amp;gt; tbody &amp;gt; tr:hover &amp;gt; td,
 .table-hover &amp;gt; tbody &amp;gt; tr:hover &amp;gt; th {
 background-color: #f5f5f5;
 }
-```&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Decorate the table according to Bootstraps reference, at &lt;a href=&quot;http://getbootstrap.com/2.3.2/base-css.html#tables&quot;&gt;http://getbootstrap.com/2.3.2/base-css.html#tables&lt;/a&gt;`&lt;/p&gt;
+&lt;p&gt;Decorate the table according to Bootstraps reference, at &lt;a href=&quot;http://getbootstrap.com/2.3.2/base-css.html#tables&quot;&gt;http://getbootstrap.com/2.3.2/base-css.html#tables&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;classes: &lt;code&gt;table, table-striped, table-bordered, table-hover, table-condensed
+&lt;p&gt;classes:
+&lt;code&gt;
+table, table-striped, table-bordered, table-hover, table-condensed
 &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;dude&lt;/p&gt;
 
 &lt;p&gt;Example can be found at the &lt;a href=&quot;http://lime.postback.se/2014/02/18/basic-dns/&quot;&gt;DNS&lt;/a&gt; post.&lt;/p&gt;
 </content>
@@ -837,7 +839,7 @@ background-color: #f5f5f5;
  
  <entry>
    <title>Basic DNS</title>
-   <link href="http://emilw.github.io//dns/2014/02/18/basic-dns/"/>
+   <link href="http://emilw.github.iohttps://emilw.github.io/dns/2014/02/18/basic-dns/"/>
    <updated>2014-02-18T16:05:57+01:00</updated>
    <id>http://emilw.github.io/dns/2014/02/18/basic-dns</id>
    <content type="html">&lt;p&gt;Some basic DNS stuff to remember:&lt;/p&gt;

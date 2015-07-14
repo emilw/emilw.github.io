@@ -13,22 +13,20 @@ categories:
 
 If you make you want to upgrade your local repository with the latest changes, e.g. merge with non commited local files you can use the command stash.
 
-`
-//Stash the current work
-git stash
+    //Stash the current work
+    git stash
 
-//Check status, should be empty
-git status
+    //Check status, should be empty
+    git status
 
-//Get the list of stashes
-git stash list
+    //Get the list of stashes
+    git stash list
 
-//.....Do operations e.g.
-git pull
+    //.....Do operations e.g.
+    git pull
 
-//Apply the stash again
-git stash apply
+    //Apply the stash again
+    git stash apply
 
-//Check status, the stashed files should be marked as before
-git status
-`
+    //Check status, the stashed files should be marked as before
+    git status

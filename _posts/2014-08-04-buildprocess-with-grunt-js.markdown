@@ -21,23 +21,29 @@ Grunt.js uses a folder where it expects two files to exist, these are:
 Gruntfile.js is the task(s) configuration and package.json holds what packages from node that are active for the project/folder.
 
 **Installing grunt on the system:**
-`
-//Install grunt, the grunt command can be executed everywhere after this step
->npm install -g grunt-cli
-`
-Setup for a project/folder:
-`
-//Create the package.json(The file can be created manually if there is a need to it)
->npm init
-//Init the grunt libs for the project(--save-dev adds the package dependencies to the package.json file)
->npm install grunt --save-dev
 
-//Download and install example task, file resize task
->npm install grunt-multiresize --save-dev
-`
+//Install grunt, the grunt command can be executed everywhere after this step
+```
+npm install -g grunt-cli
+```
+
+    Setup for a project/folder:
+
+    //Create the package.json(The file can be created manually if there is a need to it)
+
+    npm init
+
+    //Init the grunt libs for the project(--save-dev adds the package dependencies to the package.json file)
+
+    npm install grunt --save-dev
+
+    //Download and install example task, file resize task
+    npm install grunt-multiresize --save-dev
+
 
 **package.json after the steps above was done:**
-`
+
+```javascript
 {
   "name": "GruntAutomationTest",
   "version": "0.0.0",
@@ -53,7 +59,7 @@ Setup for a project/folder:
     "grunt-multiresize": "^0.3.1"
   }
 }
-`
+```
 
 **Configuring a task(Gruntfile.js):**
 `
@@ -96,5 +102,3 @@ Good resources:
 - http://gruntjs.com/plugins
 
 - http://gruntjs.com
-
-

@@ -17,7 +17,7 @@
 # Setup
 title:            KnowledgeLog
 tagline:          Log stuff
-url:              http://emilw.github.io
+#url:              http://emilw.github.io
 #paginate:         5
 baseurl:          ""
 
@@ -35,7 +35,9 @@ github_username:  emilw
 
 # Build settings
 markdown: kramdown
-theme: minima
+theme: jekyll-theme-minimal
+#jekyll-theme-architect
+#minima
 gems:
   - jekyll-feed
 exclude:

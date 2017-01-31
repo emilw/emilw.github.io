@@ -4,7 +4,7 @@
  <title>KnowledgeLog</title>
  <link href="http://localhost:4000atom.xml" rel="self"/>
  <link href="http://localhost:4000"/>
- <updated>2017-01-31T09:55:45+01:00</updated>
+ <updated>2017-01-31T20:51:40+01:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name></name>
@@ -19,13 +19,14 @@
    <id>http://localhost:4000/c++/2014/11/01/make-files-recap</id>
    <content type="html">&lt;p&gt;Below is a basic makefile:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//Setup what's the end goal, in this case it's client that should be resolved and what it depends on
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+//Setup what&lt;span class=&quot;s1&quot;&gt;'s the end goal, in this case it'&lt;/span&gt;s client that should be resolved and what it depends on
 all: client
 
-//Link them to the final runnable file, e.g. client in this example
+//Link them to the final runnable file, e.g. client &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;this example
 client: main.o HttpClient.o HttpResponse.o StringBufferHelper.o URL.o TCPClient.o g++ main.o HttpClient.o HttpResponse.o StringBufferHelper.o URL.o TCPClient.o -o client
 
-//Compile all source to object files
+//Compile all &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;to object files
 main.o: main.cpp
 	g++ -c main.cpp
 
@@ -44,11 +45,11 @@ URL.o: URL.cpp URL.h
 TCPClient.o: TCPClient.cpp TCPClient.h
 	g++ -c TCPClient.cpp TCPClient.h
 
-#hello.o: hello.cpp
-#    g++ -c hello.cpp
+&lt;span class=&quot;c&quot;&gt;#hello.o: hello.cpp&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#    g++ -c hello.cpp&lt;/span&gt;
 
 clean:
-	rm -rf *o client
+	rm -rf &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;o client
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </content>

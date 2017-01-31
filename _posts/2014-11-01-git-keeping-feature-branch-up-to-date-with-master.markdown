@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-11-01 16:10:06+00:00
-layout: post
+#layout: post
 slug: git-keeping-feature-branch-up-to-date-with-master
 title: GIT keeping feature branch up to date with master
 wordpress_id: 189

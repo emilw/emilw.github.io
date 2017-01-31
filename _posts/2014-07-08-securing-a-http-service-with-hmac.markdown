@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-07-08 12:29:50+00:00
-layout: post
+#layout: post
 slug: securing-a-http-service-with-hmac
 title: Securing a HTTP service with HMAC
 wordpress_id: 153

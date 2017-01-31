@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-04-09 12:03:45+00:00
-layout: post
+#layout: post
 slug: linuxunix-root-folder-structure-to-member
 title: Linux/Unix root folder structure to remember
 wordpress_id: 122

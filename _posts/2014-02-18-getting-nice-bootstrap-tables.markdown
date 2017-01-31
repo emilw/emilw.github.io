@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-02-18 20:04:31+00:00
-layout: post
+#layout: post
 slug: getting-nice-bootstrap-tables
 title: Getting nice bootstrap tables
 wordpress_id: 34

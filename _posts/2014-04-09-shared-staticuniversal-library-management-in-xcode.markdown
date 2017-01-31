@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-04-09 16:10:22+00:00
-layout: post
+#layout: post
 slug: shared-staticuniversal-library-management-in-xcode
 title: Shared static library management in Xcode
 wordpress_id: 125

@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-04-23 19:23:24+00:00
-layout: post
+#layout: post
 slug: c-style-guide-lines
 title: C++ style guide lines
 wordpress_id: 137

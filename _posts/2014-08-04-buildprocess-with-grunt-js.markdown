@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-08-04 15:42:48+00:00
-layout: post
+#layout: post
 slug: buildprocess-with-grunt-js
 title: Buildprocess with Grunt.js
 wordpress_id: 168

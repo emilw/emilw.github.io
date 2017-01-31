@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>KnowledgeLog by emilw</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=4c89aa8d45da54adb887fb05d988607502bc8ed9">
+    <link rel="stylesheet" href="/assets/css/style.css?v=ee7355b70dd97a84ee6ea62f444fe29a67b3cb60">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -14,39 +14,39 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>KnowledgeLog</h1>
+        <h1><a href="/" style="color:black">KnowledgeLog</a></h1>
         <p>This site is intended to be a collection of quick references for different stuff  that i have worked with. The content can be everything from notes to guides and the quality can vary.
 </p>
         <p>Number of posts: 15
         <p>
           
-            <a href="#DNS">DNS(3)</a> <br>
+            <a href="/#DNS">DNS(3)</a> <br>
           
-            <a href="#Wordpress">Wordpress(9)</a> <br>
+            <a href="/#Wordpress">Wordpress(9)</a> <br>
           
-            <a href="#3D">3D(2)</a> <br>
+            <a href="/#3D">3D(2)</a> <br>
           
-            <a href="#Game">Game(4)</a> <br>
+            <a href="/#Game">Game(4)</a> <br>
           
-            <a href="#Tips">Tips(4)</a> <br>
+            <a href="/#Tips">Tips(4)</a> <br>
           
-            <a href="#Version control">Version control(15)</a> <br>
+            <a href="/#Version control">Version control(15)</a> <br>
           
-            <a href="#Linux/Unix">Linux/Unix(10)</a> <br>
+            <a href="/#Linux/Unix">Linux/Unix(10)</a> <br>
           
-            <a href="#C++">C++(3)</a> <br>
+            <a href="/#C++">C++(3)</a> <br>
           
-            <a href="#Xcode">Xcode(5)</a> <br>
+            <a href="/#Xcode">Xcode(5)</a> <br>
           
-            <a href="#HTTP">HTTP(4)</a> <br>
+            <a href="/#HTTP">HTTP(4)</a> <br>
           
-            <a href="#Javascript">Javascript(10)</a> <br>
+            <a href="/#Javascript">Javascript(10)</a> <br>
           
-            <a href="#Security">Security(8)</a> <br>
+            <a href="/#Security">Security(8)</a> <br>
           
-            <a href="#Uncategorised">Uncategorised(13)</a> <br>
+            <a href="/#Uncategorised">Uncategorised(13)</a> <br>
           
-            <a href="#Automation">Automation(10)</a> <br>
+            <a href="/#Automation">Automation(10)</a> <br>
           
         </p>
       </header>
@@ -80,10 +80,8 @@
 </table>
 
 <script>
-function postsModel(){
-    self = this;
-    self.posts = ko.observableArray();
-
+var getPostsFromJekyllAsObservable = function(){
+    var posts = [];
     
         var post = {};
         post.title = ko.observable("Make files recap");
@@ -96,7 +94,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("GIT keeping feature branch up to date with master");
@@ -111,7 +109,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("GIT Stash");
@@ -126,7 +124,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Buildprocess with Grunt.js");
@@ -141,7 +139,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Securing a HTTP service with HMAC");
@@ -162,7 +160,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("C++ style guide lines");
@@ -175,7 +173,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Shared static library management in Xcode");
@@ -190,7 +188,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Linux/Unix root folder structure to remember");
@@ -203,7 +201,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("GIT stuff");
@@ -218,7 +216,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Nice shape intersection example ");
@@ -233,7 +231,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Developer podcasts");
@@ -246,7 +244,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Nice way to find e-books");
@@ -259,7 +257,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Selecting a game engine");
@@ -274,7 +272,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Getting nice bootstrap tables");
@@ -287,7 +285,7 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Basic DNS");
@@ -300,29 +298,12 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     
+    return ko.observableArray(posts);
+};
 
-    self.freeTextFilter = ko.observable("");
-    self.categoryFilter = ko.observable("All categories");
-    self.filteredPosts = ko.pureComputed(function(){
-        return _.filter(self.posts(), function(post){
-            if(self.categoryFilter() == "All categories" ||
-                post.categories.indexOf(self.categoryFilter()) != -1){
-                if(self.freeTextFilter == "" ||
-                    post.title().toLowerCase().includes(self.freeTextFilter().toLowerCase())){
-                    return true;
-                }
-            }
-        });
-    },self);
-
-    self.setCategoryFilterFromHash = function(hash){
-        if(hash != ""){
-            self.categoryFilter(hash.replace("#", ""));
-        }
-    }
-
+var getCategoriesFromJekyllAsObservable = function(){
     var allCategories = [];
     allCategories.push(self.categoryFilter());
     
@@ -354,16 +335,41 @@ function postsModel(){
     
     allCategories.push("Automation");
     
-    self.allCategories = ko.observableArray(allCategories.sort());
+    return ko.observableArray(allCategories.sort());
+};
+
+function postsModel(){
+    self = this;
+    self.posts = getPostsFromJekyllAsObservable();
+
+    self.freeTextFilter = ko.observable("");
+    self.categoryFilter = ko.observable("All categories");
+    self.filteredPosts = ko.pureComputed(function(){
+        return _.filter(self.posts(), function(post){
+            if(self.categoryFilter() == "All categories" ||
+                post.categories.indexOf(self.categoryFilter()) != -1){
+                if(self.freeTextFilter == "" ||
+                    post.title().toLowerCase().includes(self.freeTextFilter().toLowerCase())){
+                    return true;
+                }
+            }
+        });
+    },self);
+
+    self.setCategoryFilterFromHash = function(hash){
+        if(hash != ""){
+            self.categoryFilter(hash.replace("#", ""));
+        }
+    }
+
+    self.allCategories = getCategoriesFromJekyllAsObservable();
     self.setCategoryFilterFromHash(window.location.hash);
 };
 var model = new postsModel();
 ko.applyBindings(model);
 
 if( 'onhashchange' in window ) {
-  // Setup our event listener for the hash change
   window.addEventListener('hashchange', getHashValue, false);
-  // Our custom event handler
   function getHashValue() {
       model.setCategoryFilterFromHash(window.location.hash);
   }

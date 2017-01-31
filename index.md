@@ -30,10 +30,8 @@
 </table>
 
 <script>
-function postsModel(){
-    self = this;
-    self.posts = ko.observableArray();
-
+var getPostsFromJekyllAsObservable = function(){
+    var posts = [];
     {% for post in site.posts %}
         var post = {};
         post.title = ko.observable("{{post.title}}");
@@ -46,8 +44,23 @@ function postsModel(){
         post.TitlePresentation = ko.pureComputed(function(){
             return this.title() + '(' + this.categories.join() + ')';
         },post);
-        self.posts.push(post);
+        posts.push(post);
     {% endfor %}
+    return ko.observableArray(posts);
+};
+
+var getCategoriesFromJekyllAsObservable = function(){
+    var allCategories = [];
+    allCategories.push(self.categoryFilter());
+    {% for category in site.categories %}
+    allCategories.push("{{category | first}}");
+    {% endfor %}
+    return ko.observableArray(allCategories.sort());
+};
+
+function postsModel(){
+    self = this;
+    self.posts = getPostsFromJekyllAsObservable();
 
     self.freeTextFilter = ko.observable("");
     self.categoryFilter = ko.observable("All categories");
@@ -69,21 +82,14 @@ function postsModel(){
         }
     }
 
-    var allCategories = [];
-    allCategories.push(self.categoryFilter());
-    {% for category in site.categories %}
-    allCategories.push("{{category | first}}");
-    {% endfor %}
-    self.allCategories = ko.observableArray(allCategories.sort());
+    self.allCategories = getCategoriesFromJekyllAsObservable();
     self.setCategoryFilterFromHash(window.location.hash);
 };
 var model = new postsModel();
 ko.applyBindings(model);
 
 if( 'onhashchange' in window ) {
-  // Setup our event listener for the hash change
   window.addEventListener('hashchange', getHashValue, false);
-  // Our custom event handler
   function getHashValue() {
       model.setCategoryFilterFromHash(window.location.hash);
   }

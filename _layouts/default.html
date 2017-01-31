@@ -14,12 +14,12 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>{{ site.title | default: site.github.repository_name }}</h1>
+        <h1><a href="/" style="color:black">{{ site.title }}</a></h1>
         <p>{{ site.description | default: site.github.project_tagline }}</p>
         <p>Number of posts: {{site.posts | size}}
         <p>
           {% for category in site.categories %}
-            <a href="#{{category | first}}">{{category | first}}({{category | first | size}})</a> <br>
+            <a href="/#{{category | first}}">{{category | first}}({{category | first | size}})</a> <br>
           {% endfor %}
         </p>
       </header>

@@ -2,7 +2,7 @@
 author: emilw
 comments: true
 date: 2014-03-13 07:13:40+00:00
-layout: post
+#layout: post
 slug: developer-podcasts
 title: Developer podcasts
 wordpress_id: 99

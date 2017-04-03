@@ -72,20 +72,20 @@ Totalt 30 aktier, vi säljer 10 av dem 2016 vilket ger att vi säljer 30%(1/3) a
 ### 3.1(Ersättning...)
 Ange totala summan på sålda aktier.
 
-I vårat exempel 20 000.
+*I vårat exempel:* 20 000.
 
 ### 3.2(Verkligt omkostnadsbelopp)
-Ange vad värdet var vid inköp. Måste kolla om man även här ska räkna med räntan eller om det bara är inköpspriset.
+Ange vad värdet var vid inköp.
 
-I vårat exempel 16 667.
+*I vårat exempel:* 16 667.
 
 ### 3.3 (Vinst)
-Vinsten blir 20 000 - 16 667 = 3 333
+*Vinsten blir 20 000 - 16 667 = 3 333*
 
 ### 3.6 (Omkostnadsbelopp)
 Samma som anskaffningspriset(3.2).
 
-I vårat exempel 16 667.
+*I vårat exempel:* 16 667.
 
 ### 3.7b(Ingen utdelning)
 Här förs beloppet in från 2.5, alltså från huvudregeln.

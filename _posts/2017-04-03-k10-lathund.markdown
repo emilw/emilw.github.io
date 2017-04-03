@@ -18,6 +18,7 @@ Eftersom det känns som man börjar om varje år när deklarationen kommer så t
 ## Arbetsexempel
 Exempelinnehavet nedan används i deklarationsexemplet:
 Fyll i omkostnadsbeloppet vilket är detsamma som:
+
 |Aktivitet|År|Antal aktier|Anskaffning/Försäljningssvärde|Köp/Sälj värde|
 |---|---|-----|----|---|
 |Köp|2014|10|1000|10 000|

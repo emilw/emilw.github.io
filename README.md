@@ -1,2 +1,2 @@
-[emilw.github.io](https://emilw.github.io)
+emilw.github.io
 ===============

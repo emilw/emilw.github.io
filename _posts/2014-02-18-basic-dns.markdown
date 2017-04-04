@@ -6,6 +6,7 @@ date: 2014-02-18 15:05:57+00:00
 slug: basic-dns
 title: Basic DNS
 wordpress_id: 9
+commentIssueId: 16
 categories:
 - DNS
 ---

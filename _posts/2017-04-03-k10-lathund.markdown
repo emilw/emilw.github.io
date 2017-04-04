@@ -3,12 +3,12 @@ author: emilw
 date: 2017-04-03 10:00:00+00:00
 slug: k10-lathund
 title: K10 Lathund
+commentIssueId: 1
 wordpress_id: 99
 categories:
 - Tips
 ---
 
-# K10 lathund
 Eftersom det känns som man börjar om varje år när deklarationen kommer så tänkte jag skriva ner manövern för hur man deklarerar en K10. Har även haft min första försäljning vilket gjorde det ännu j*vligare än tidigare år.
 
 ## Referenser

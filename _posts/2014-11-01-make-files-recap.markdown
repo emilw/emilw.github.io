@@ -6,6 +6,7 @@ date: 2014-11-01 16:16:13+00:00
 slug: make-files-recap
 title: Make files recap
 wordpress_id: 191
+commentIssueId: 2
 categories:
 - C++
 ---

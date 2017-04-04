@@ -6,6 +6,7 @@ date: 2014-07-08 12:29:50+00:00
 slug: securing-a-http-service-with-hmac
 title: Securing a HTTP service with HMAC
 wordpress_id: 153
+commentIssueId: 6
 categories:
 - Game
 - HTTP

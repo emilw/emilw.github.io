@@ -6,6 +6,7 @@ date: 2014-08-04 15:42:48+00:00
 slug: buildprocess-with-grunt-js
 title: Buildprocess with Grunt.js
 wordpress_id: 168
+commentIssueId: 5
 categories:
 - Automation
 - Javascript

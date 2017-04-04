@@ -6,6 +6,7 @@ date: 2014-02-18 20:04:31+00:00
 slug: getting-nice-bootstrap-tables
 title: Getting nice bootstrap tables
 wordpress_id: 34
+commentIssueId: 15
 categories:
 - Wordpress
 ---

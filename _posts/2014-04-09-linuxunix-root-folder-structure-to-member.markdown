@@ -8,7 +8,7 @@ title: Linux/Unix root folder structure to remember
 wordpress_id: 122
 commentIssueId: 9
 categories:
-- Linux/Unix
+- Linux
 ---
 
 Overview image that summarize it nicely.

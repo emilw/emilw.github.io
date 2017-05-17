@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>KnowledgeLog by emilw</title>
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=ee7355b70dd97a84ee6ea62f444fe29a67b3cb60">
+    <link rel="stylesheet" href="/assets/css/style.css?v=d007cc890da7238c69f105ed058405ff0d5d6dcc">
     <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,7 +18,7 @@
         <h1><a href="/" style="color:black">KnowledgeLog</a></h1>
         <p>This site is intended to be a collection of quick references for different stuff  that i have worked with. The content can be everything from notes to guides and the quality can vary.
 </p>
-        <p>Number of posts: 15
+        <p>Number of posts: 19
         <p>
           
             <a href="/#DNS">DNS(3)</a> <br>
@@ -48,10 +49,13 @@
           
             <a href="/#Automation">Automation(10)</a> <br>
           
+            <a href="/#Editors">Editors(7)</a> <br>
+          
+            <a href="/#Linux">Linux(5)</a> <br>
+          
         </p>
       </header>
       <section>
-
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
 
 <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
@@ -82,6 +86,58 @@
 <script>
 var getPostsFromJekyllAsObservable = function(){
     var posts = [];
+    
+        var post = {};
+        post.title = ko.observable("K10 Lathund(Swedish)");
+        post.url = ko.observable("/tips/2017/04/03/k10-lathund.html");
+        post.date = ko.observable("2017-04-03 12:00:00 +0200");
+        post.categories = [];
+        
+            post.categories.push("Tips");
+        
+        post.TitlePresentation = ko.pureComputed(function(){
+            return this.title() + '(' + this.categories.join() + ')';
+        },post);
+        posts.push(post);
+    
+        var post = {};
+        post.title = ko.observable("Bra kommandon för Linux(Swedish)");
+        post.url = ko.observable("/linux/2017/02/07/commands-for-linux.html");
+        post.date = ko.observable("2017-02-07 11:00:00 +0100");
+        post.categories = [];
+        
+            post.categories.push("Linux");
+        
+        post.TitlePresentation = ko.pureComputed(function(){
+            return this.title() + '(' + this.categories.join() + ')';
+        },post);
+        posts.push(post);
+    
+        var post = {};
+        post.title = ko.observable("Different source control systems(Swedish)");
+        post.url = ko.observable("/version%20control/2017/01/20/different-source-control-systems.html");
+        post.date = ko.observable("2017-01-20 17:16:13 +0100");
+        post.categories = [];
+        
+            post.categories.push("Version control");
+        
+        post.TitlePresentation = ko.pureComputed(function(){
+            return this.title() + '(' + this.categories.join() + ')';
+        },post);
+        posts.push(post);
+    
+        var post = {};
+        post.title = ko.observable("VI editor summary(Swedish)");
+        post.url = ko.observable("/editors/2017/01/20/vi-editor-summary.html");
+        post.date = ko.observable("2017-01-20 11:00:00 +0100");
+        post.categories = [];
+        
+            post.categories.push("Editors");
+        
+        post.TitlePresentation = ko.pureComputed(function(){
+            return this.title() + '(' + this.categories.join() + ')';
+        },post);
+        posts.push(post);
     
         var post = {};
         post.title = ko.observable("Make files recap");
@@ -335,6 +391,10 @@ var getCategoriesFromJekyllAsObservable = function(){
     
     allCategories.push("Automation");
     
+    allCategories.push("Editors");
+    
+    allCategories.push("Linux");
+    
     return ko.observableArray(allCategories.sort());
 };
 
@@ -376,7 +436,6 @@ if( 'onhashchange' in window ) {
 }
 
 </script>
-
 
 
       </section>
